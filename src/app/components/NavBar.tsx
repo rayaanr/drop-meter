@@ -2,7 +2,7 @@ import React from "react";
 
 const TopNav = () => {
     return (
-        <nav className="bg-black border-b border-gray-600 fixed w-full">
+        <nav className="bg-black bg-opacity-75 border-b border-gray-600 fixed w-full z-50">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a href="" className="flex items-center">
                     <img src={"./DropMeterLogo.png"} alt={"DropMeterLogo"} className={"w-40"}></img>

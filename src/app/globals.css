@@ -11,8 +11,10 @@
 body {
     background-image: linear-gradient(to right top, #004453, #1c3144, #21202e, #191318, #000000);
     color: white;
-    height: 100dvh;
+    min-height: 100dvh;
     width: 100dvw;
+    margin: 0;
+    background-color: black;
     /*color: rgb(var(--foreground-rgb));*/
     /*background-image: linear-gradient(to right top, #000000, #0a0005, #10010e, #120316, #0f071d, #0d0821, #0a0925, #040b29, #08092a, #0d062a, #12032a, #17002a);*/
 }

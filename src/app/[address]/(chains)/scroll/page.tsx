@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import zksyncTxList from "@/app/dataRetriever/zksyncTxList";
 import { TxListDataCard } from "@/app/components/TxListDataCard";
 import SummaryCard from "@/app/components/SummaryCard";
 import {Token, Transaction} from "@/app/global/interfaces";
+import evmTxList from "@/app/dataRetriever/evmTxList";
 
 interface PageProps {
     params: { address: string };
@@ -17,7 +17,7 @@ export default function Page({ params }: PageProps) {
     useEffect(() => {
         const fetchTransactions = async () => {
             try {
-                const retrievedTransactions = await zksyncTxList(params.address);
+                const retrievedTransactions = await evmTxList("scroll", params.address);
                 setTransactionsList(retrievedTransactions);
 
             } catch (error) {
@@ -32,11 +32,11 @@ export default function Page({ params }: PageProps) {
             <div className={"pt-5"}></div>
 
             <div className={"pt-5 w-1/2 block m-auto z-10"}>
-                <SummaryCard txList={transactionsList} selectedNetwork={'zkera'}/>
+                <SummaryCard txList={transactionsList} selectedNetwork={'scroll'}/>
             </div>
-
+            
             <div className={"p-5"}>
-                <TxListDataCard txList={transactionsList} selectedNetwork={'zkera'} />
+                <TxListDataCard txList={transactionsList} selectedNetwork={'scroll'} />
             </div>
         </div>
     );

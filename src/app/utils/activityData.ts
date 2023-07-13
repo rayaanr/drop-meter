@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Transaction } from "@/app/gloabal/interfaces";
-import TimeAgo from "@/app/utils/TimeAgo";
-import moment from "moment";
+import { useState, useEffect } from "react";
+import {Transaction} from "@/app/global/interfaces";
 
 const ActivityData = ({ transactionsList }: { transactionsList: Transaction[] }) => {
     const [uniqueDaysCount, setUniqueDaysCount] = useState(0);

@@ -1,6 +1,6 @@
 import {Transaction} from "@/app/global/interfaces";
 import moment from "moment";
-import timeAgo from "@/app/utils/TimeAgo";
+import timeAgo from "@/app/utils/timeAgo";
 import {chainData} from "@/app/global/chainData";
 import {AiOutlineFileDone} from "react-icons/ai";
 import { MdOutlineErrorOutline } from "react-icons/md";
@@ -13,11 +13,11 @@ function shortenTx(hash: string, length: number) {
     return `${prefix}...${suffix}`;
 }
 
-function TxListDataCard({ txList , chain }: { txList: Transaction[] , chain: keyof typeof chainData}) {
+function TxListDataCard({ txList , selectedNetwork }: { txList: Transaction[] , selectedNetwork: keyof typeof chainData}) {
 
     return (
         <>
-        <div className="relative h-[454px] overflow-x-auto rounded-lg border border-white p-5">
+        <div className="relative h-[454px] overflow-x-auto rounded-lg border border-gray-400 p-5">
             <table className="w-full text-sm text-left text-white">
                 <thead className="text-xs text-white uppercase bg-gray-400 bg-opacity-20 ">
                 <tr className={""}>
@@ -39,7 +39,7 @@ function TxListDataCard({ txList , chain }: { txList: Transaction[] , chain: key
                         </td>
                         <td className="px-2 py-4 font-medium text-white whitespace-nowrap">
                             {transaction.status === "verified" ? <IoCheckmarkDoneCircleOutline className={"inline-block mr-2 text-green-500"}/> : <MdOutlineErrorOutline className={"inline-block mr-2 text-red-500"}/> }
-                            <a href={`${chainData[chain].hashLinkEndpoint}${transaction.transactionHash}`} className={"hover:text-blue-500 duration-200"}>
+                            <a href={`${chainData[selectedNetwork].hashLinkEndpoint}${transaction.transactionHash}`} className={"hover:text-blue-500 duration-200"}>
                                 {shortenTx(transaction.transactionHash, 10)}
                             </a>
                         </td>
@@ -55,7 +55,7 @@ function TxListDataCard({ txList , chain }: { txList: Transaction[] , chain: key
                             {shortenTx(transaction.initiatorAddress, 10)} &nbsp;&rarr;&nbsp; {shortenTx(transaction.contractAddress, 10)}
                         </td>
                         <td className="px-6 py-4 flex justify-between">
-                            {transaction.value === "" ? <span>-</span> : <span className={"text-gray-400 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border border-gray-500"}>{transaction.value} </span>}
+                            {(transaction.value === "") ? <span>-</span> : <span className={"text-gray-400 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border border-gray-500"}>{transaction.value} </span>}
                             {transaction.valueInUSD === 0 ? <span>-</span> : <span>${transaction.valueInUSD} </span>}
                         </td>
                         <td className="px-6 py-4">

@@ -1,4 +1,5 @@
-const getTimeAgo = (date: string) => {
+const getTimeAgo = (date: Date | string | null) => {
+    // @ts-ignore
     const seconds = (new Date().getTime() - new Date(date).getTime()) / 1000;
 
     if (seconds < 60) {

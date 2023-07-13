@@ -30,25 +30,20 @@ const apiEndpoints = {
 
 export const chainData = {
     eth: {
-        // txDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=txlist&startblock=0&endblock=latest&sort=desc&apikey=${apiKeys.etherscanAPIKey}&address=`,
-        // balanceDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=balance&address=${addressList.evmAddress}&tag=latest&apikey=${apiKeys.etherscanAPIKey}`,
+        txDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=txlist&startblock=0&endblock=latest&sort=desc&apikey=${apiKeys.etherscanAPIKey}&address=`,
+        balanceDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=balance&address=${``}&tag=latest&apikey=${apiKeys.etherscanAPIKey}`,
         hashLinkEndpoint : `https://etherscan.io/tx/`,
-    },
-    arb: {
-        // txDataAPI : `${apiEndpoints.arbiscanAPIEndpoint}?module=account&action=txlist&address=${addressList.evmAddress}&startblock=0&endblock=latest&sort=desc&apikey=${apiKeys.arbiscanAPIKey}`,
-        // balanceDataAPI : `${apiEndpoints.arbiscanAPIEndpoint}?module=account&action=balance&address=${addressList.evmAddress}&tag=latest&apikey=${apiKeys.arbiscanAPIKey}`,
-        hashLinkEndpoint : `https://arbiscan.io/tx/`,
         tokenTransferDataAPI : ``,
     },
     zkera: {
-        // txDataAPI : `${apiEndpoints.zksyncscanAPIEndpoint}?module=account&action=txlist&address=${addressList.evmAddress}&startblock=0&endblock=latest&sort=desc`,
+        txDataAPI : ``,
         balanceDataAPI : `https://zksync2-mainnet.zkscan.io/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
         tokenTransferDataAPI : ``,
     },
     zklite: {
-        // txDataAPI : `https://api.zksync.io/api/v0.2/accounts/${addressList.evmAddress}/transactions?from=latest&limit=100&direction=older`,
-        // balanceDataAPI : `https://api.zksync.io/api/v0.2/accounts/${addressList.evmAddress}?stateType=finalized`,
+        txDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}/transactions?from=latest&limit=100&direction=older`,
+        balanceDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}?stateType=finalized`,
         hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
         tokenTransferDataAPI : ``,
     },

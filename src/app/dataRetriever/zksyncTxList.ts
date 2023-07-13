@@ -110,7 +110,7 @@ const fetchTransactions = async (address: string): Promise<Transaction[]> => {
                     value,
                     valueInUSD: 0,
                     status: transaction.status === "verified" ? "verified" : "failed",
-                    fee: (parseInt(transaction.fee) / 1e18) * 1850,
+                    fee: (parseInt(transaction.fee) / 1e18),
                     isL1Originated: transaction.isL1Originated,
                     method: transaction.from.toLowerCase() === address.toLowerCase() ? "out" : "in",
                     type,

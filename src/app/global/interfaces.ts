@@ -20,10 +20,10 @@ export interface Transaction {
     transactionHash: string;
     datetime: string;
     initiatorAddress: string;
-    value: string;
+    value: string;  // in Token
     valueInUSD: number;
-    status: string;
-    fee: number;
+    status: "verified" | "failed" | "pending" | undefined;
+    fee: number;    // in ETH
     isL1Originated: boolean;
     method: string;
     type: string | undefined;

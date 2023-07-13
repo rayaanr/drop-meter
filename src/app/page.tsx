@@ -45,7 +45,7 @@ function Home() {
     };
 
   return (
-    <main className={"flex justify-center items-center h-full text-center"}>
+    <main className={"flex justify-center items-center h-full text-center"} style={{height: "100dvh"}}>
       <div className={"w-1/2 md:w-3/4 sm:w-2/3"}>
           <h1 className="title mb-20 pb-2.5 text-5xl font-bold leading-snug tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
               Get Stats. Increase Points.<br/>Be Eligible.
