@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-let ethPrice: number | null = null;
+let ethPrice: number;
 
 const useEthPrice = () => {
-    const [price, setPrice] = useState<number | null>(ethPrice);
+    const [price, setPrice] = useState(0);
 
     useEffect(() => {
         const fetchEthPrice = async () => {
@@ -17,9 +17,9 @@ const useEthPrice = () => {
             }
         };
 
-        fetchEthPrice();
+        fetchEthPrice().then(r => r);
     }, []);
-    
+
     return price;
 };
 
