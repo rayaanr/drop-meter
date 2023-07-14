@@ -16,17 +16,28 @@ const Accordion = ({ children }: AccordionProps) => {
         (child) => React.isValidElement(child)
     );
 
+    const filteredHeaders = filteredChildren.filter(
+        (child) => (child as React.ReactElement).type === AccordionHeader
+    );
+
+    const filteredContents = filteredChildren.filter(
+        (child) => (child as React.ReactElement).type === AccordionContent
+    );
+
     return (
         <div className="accordion">
-            <div className="accordion-header flex justify-between items-center" onClick={toggleAccordion}>
-                {filteredChildren.filter((child) => child.type === AccordionHeader)}
+            <div
+                className="accordion-header flex justify-between items-center"
+                onClick={toggleAccordion}
+            >
+                {filteredHeaders}
                 <div className="accordion-icon">
                     {isOpen ? <FaChevronUp /> : <FaChevronDown />}
                 </div>
             </div>
             {isOpen && (
                 <div className="accordion-content overflow-scroll" style={{ maxHeight: "25vh" }}>
-                    {filteredChildren.filter((child) => child.type === AccordionContent)}
+                    {filteredContents}
                 </div>
             )}
         </div>
