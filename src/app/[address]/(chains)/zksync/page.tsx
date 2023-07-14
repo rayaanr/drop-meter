@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import zksyncTxList from "@/app/dataRetriever/zksyncTxList";
 import { TxListDataCard } from "@/app/components/TxListDataCard";
-import SummaryCard from "@/app/components/SummaryCard";
+import FullDataCard from "@/app/components/FullDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
 
 interface PageProps {
@@ -32,11 +32,11 @@ export default function Page({ params }: PageProps) {
             <div className={"pt-5"}></div>
 
             <div className={"pt-5 w-1/2 block m-auto z-10"}>
-                <SummaryCard txList={transactionsList} selectedNetwork={'zkera'} balanceList={balanceList}/>
+                <FullDataCard txList={transactionsList} selectedNetwork={'zksync'} balanceList={balanceList}/>
             </div>
 
             <div className={"p-5"}>
-                <TxListDataCard txList={transactionsList} selectedNetwork={'zkera'} />
+                <TxListDataCard txList={transactionsList} selectedNetwork={'zksync'} />
             </div>
         </div>
     );

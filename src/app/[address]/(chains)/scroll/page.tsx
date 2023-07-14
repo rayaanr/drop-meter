@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { TxListDataCard } from "@/app/components/TxListDataCard";
-import SummaryCard from "@/app/components/SummaryCard";
+import FullDataCard from "@/app/components/FullDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
 import evmTxList from "@/app/dataRetriever/evmTxList";
 import tokenFetch from "@/app/dataRetriever/balanceList";
@@ -37,7 +37,7 @@ function Page({ params }: PageProps) {
             <div className={"pt-5"}></div>
 
             <div className={"pt-5 w-1/2 block m-auto z-10"}>
-                <SummaryCard txList={transactionsList} selectedNetwork={thisNetwork} balanceList={balanceList}/>
+                <FullDataCard txList={transactionsList} selectedNetwork={thisNetwork} balanceList={balanceList}/>
             </div>
             
             <div className={"p-5"}>

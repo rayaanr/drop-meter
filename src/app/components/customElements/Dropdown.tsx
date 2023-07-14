@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {chainData} from '@/app/global/chainData';
+import Image from "next/image";
 
 interface Option {
     label: string;
@@ -18,7 +19,7 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
         {
             label: 'ZkSync',
             value: 'zksync',
-            image: `${chainData.zkera.logo}`,
+            image: `${chainData.zksync.logo}`,
         },
         {
             label: 'Scroll',
@@ -45,7 +46,7 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
                     className="text-white rounded text-sm w-24 py-2.5 text-center flex justify-center items-center bg-blue-600 hover:bg-blue-700 ">
                     {selectedOption ? (
                         <span className={'flex'}>
-                            <img src={selectedOption.image} alt={selectedOption.label} className="option-image w-[1.1rem]"/>
+                            <Image src={selectedOption.image} alt={selectedOption.label} className="option-image w-[1.1rem]" height={100} width={100}/>
                             {selectedOption.label}
                         </span>
                     ) : ('Select')}
@@ -60,7 +61,7 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
                                     <button onClick={() => handleOptionClick(option)}
                                         className="w-full px-4 py-2 hover:bg-gray-600 flex items-center gap-2">
                                         <div className={'rounded-full border border-white bg-black'}>
-                                            <img src={option.image} alt={option.label} className="option-image w-5 h-5 m-1 "/>
+                                            <Image src={option.image} alt={option.label} className="option-image w-5 h-5 m-1 " height={100} width={100}/>
                                         </div>
                                         {option.label}
                                     </button>

@@ -36,7 +36,7 @@ export const chainData = {
         tokenTransferDataAPI : ``,
         logo : './assets/chainLogos/ethereum.svg'
     },
-    zkera: {
+    zksync: {
         txDataAPI : ``,
         balanceDataAPI : `https://zksync2-mainnet.zkscan.io/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
