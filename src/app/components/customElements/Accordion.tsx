@@ -1,33 +1,43 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const Accordion = ({ children }: { children: React.ReactNode }) => {
+interface AccordionProps {
+    children: React.ReactNode;
+}
+
+const Accordion = ({ children }: AccordionProps) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
     };
 
+    const filteredChildren = React.Children.toArray(children).filter(
+        (child) => React.isValidElement(child)
+    );
+
     return (
         <div className="accordion">
             <div className="accordion-header flex justify-between items-center" onClick={toggleAccordion}>
-                {children.filter(child => child.type === AccordionHeader)}
-                <div className="accordion-icon">{isOpen ? <FaChevronUp /> : <FaChevronDown />}</div>
+                {filteredChildren.filter((child) => child.type === AccordionHeader)}
+                <div className="accordion-icon">
+                    {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+                </div>
             </div>
             {isOpen && (
                 <div className="accordion-content overflow-scroll" style={{ maxHeight: "25vh" }}>
-                    {children.filter(child => child.type === AccordionContent)}
+                    {filteredChildren.filter((child) => child.type === AccordionContent)}
                 </div>
             )}
         </div>
     );
 };
 
-const AccordionHeader = ({ children }) => {
+const AccordionHeader = ({ children }: AccordionProps) => {
     return <>{children}</>;
 };
 
-const AccordionContent = ({ children }) => {
+const AccordionContent = ({ children }: AccordionProps) => {
     return <>{children}</>;
 };
 
