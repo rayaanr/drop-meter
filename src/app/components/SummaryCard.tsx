@@ -8,7 +8,7 @@ import getTimeAgo from "@/app/utils/timeAgo";
 import 'react-circular-progressbar/dist/styles.css';
 import ProgressBar from "@/app/components/customElements/ProgressBar";
 import {Accordion, AccordionContent, AccordionHeader} from "@/app/components/customElements/Accordion";
-
+import useEthPrice from "@/app/global/ethPrice";
 
 function SummaryCard({txList, balanceList, selectedNetwork}: {
     txList: Transaction[],
@@ -20,6 +20,7 @@ function SummaryCard({txList, balanceList, selectedNetwork}: {
     const [ethVolume, setETHVolume] = useState(0);
     const [totalFee, setTotalFee] = useState(0);
     const activityData = ActivityData({transactionsList: txList});
+    const ethPrice = useEthPrice();
 
     useEffect(() => {
         let count = 0;
@@ -61,11 +62,11 @@ function SummaryCard({txList, balanceList, selectedNetwork}: {
                             <tbody>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0">Total</td>
-                                <td className="px-6 py-0">${totalVolume.toFixed(2)}</td>
+                                <td className="px-6 py-0">${totalVolume.toFixed(2)} ( {(totalVolume/ethPrice).toFixed(4)} Ξ )</td>
                             </tr>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0">ETH</td>
-                                <td className="px-6 py-0">${ethVolume.toFixed(2)}</td>
+                                <td className="px-6 py-0">${ethVolume.toFixed(2)} ( {(ethVolume/ethPrice).toFixed(4)} Ξ )</td>
                             </tr>
                             </tbody>
                         </table>
@@ -79,7 +80,7 @@ function SummaryCard({txList, balanceList, selectedNetwork}: {
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="px-6 py-4">Fee</th>
                     <td className="px-6 py-4"></td>
-                    <td className="px-6 py-4">{totalFee.toFixed(5)} ETH</td>
+                    <td className="px-6 py-4">{totalFee.toFixed(5)} ETH (${(totalFee*ethPrice).toFixed(2)})</td>
                 </tr>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="px-6 py-4">Activity</th>

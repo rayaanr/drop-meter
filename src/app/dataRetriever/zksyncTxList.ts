@@ -2,6 +2,7 @@ import {Token, Transfer, Transaction} from "@/app/global/interfaces";
 import moment from "moment";
 import axios from "axios";
 
+
 const fetchTransactions = async (address: string): Promise<Transaction[]> => {
     const limit = 100;
     let currentPageForTx = 1;

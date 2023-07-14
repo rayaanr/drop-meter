@@ -2,6 +2,7 @@ import {chainData} from "@/app/global/chainData";
 import {Transaction} from "@/app/global/interfaces";
 import moment from "moment";
 
+
 const evmTxList = async (selectedNetwork: keyof typeof chainData, address:string): Promise<Transaction[]> => {
     try {
         const transactionResponse = await fetch(`${chainData[selectedNetwork].txDataAPI}${address.toLowerCase()}`);

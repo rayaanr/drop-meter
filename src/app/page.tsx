@@ -20,6 +20,9 @@ function Home() {
     }
 
     useEffect(() => {
+
+
+
         if (address.length >= 1 && !isValidEthereumAddress(address)) {
             setError('Not a valid address');
         } else {

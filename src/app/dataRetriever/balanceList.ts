@@ -1,6 +1,7 @@
 import {chainData} from "@/app/global/chainData";
 import {Token} from "@/app/global/interfaces";
 
+
 const tokenFetch = async (selectedNetwork: keyof typeof chainData, address: string): Promise<Token[]> => {
     try {
         const response = await fetch(`${chainData[selectedNetwork].balanceDataAPI}${address}`);

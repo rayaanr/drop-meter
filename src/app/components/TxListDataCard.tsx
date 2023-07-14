@@ -5,6 +5,7 @@ import {chainData} from "@/app/global/chainData";
 import {AiOutlineFileDone} from "react-icons/ai";
 import { MdOutlineErrorOutline, MdOutlinePending } from "react-icons/md";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import useEthPrice from "@/app/global/ethPrice";
 
 
 function shortenTx(hash: string, length: number) {
@@ -14,6 +15,7 @@ function shortenTx(hash: string, length: number) {
 }
 
 function TxListDataCard({ txList , selectedNetwork }: { txList: Transaction[] , selectedNetwork: keyof typeof chainData}) {
+    const ethPrice = useEthPrice();
 
     return (
         <>
@@ -59,7 +61,7 @@ function TxListDataCard({ txList , selectedNetwork }: { txList: Transaction[] , 
                             {transaction.valueInUSD === 0 ? <span>-</span> : <span>${transaction.valueInUSD} </span>}
                         </td>
                         <td className="px-6 py-4">
-                            ${transaction.fee.toFixed(2)}
+                            ${(transaction.fee*ethPrice).toFixed(2)}
                         </td>
                     </tr>
                 ))}
