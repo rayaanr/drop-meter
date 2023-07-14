@@ -6,11 +6,9 @@ const evmTxList = async (selectedNetwork: keyof typeof chainData, address:string
     try {
         const transactionResponse = await fetch(`${chainData[selectedNetwork].txDataAPI}${address.toLowerCase()}`);
         const transactionResult = await transactionResponse.json();
-        console.log('hello', transactionResult.result)
 
         const tokenTransferResponse = await fetch(`${chainData[selectedNetwork].tokenTransferDataAPI}${address.toLowerCase()}`);
         const tokenTransferResult = await tokenTransferResponse.json();
-        console.log('token',tokenTransferResult.result)
 
         const transactionsList: Transaction[] = transactionResult.result.map((transaction: any) => {
 
@@ -34,7 +32,6 @@ const evmTxList = async (selectedNetwork: keyof typeof chainData, address:string
             };
         });
 
-        console.log(transactionsList)
         return transactionsList;
     } catch (error) {
         console.error('Error fetching data:', error);

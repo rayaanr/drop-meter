@@ -2,13 +2,18 @@
 
 import {useEffect, useState} from "react";
 import { useRouter } from 'next/navigation';
+import Dropdown from "@/app/components/customElements/Dropdown";
 
 function Home() {
 
     const [address, setAddress] = useState('');
     const [error, setError] = useState('');
-    const [selectedNetwork, setSelectedNetwork] = useState('zksync');
+    const [selectedNetwork, setSelectedNetwork] = useState(null);
     const router = useRouter();
+
+    const handleNetworkSelect = (value : any) => {
+        setSelectedNetwork(value);
+    };
 
     function isValidEthereumAddress(address:string) {
         return /^0x[0-9A-Fa-f]{40}$/.test(address);
@@ -26,9 +31,9 @@ function Home() {
         setAddress(event.target.value);
     };
 
-    const handleNetworkChange = (event:any) => {
-        setSelectedNetwork(event.target.value);
-    }
+    // const handleNetworkChange = (event:any) => {
+    //     setSelectedNetwork(event.target.value);
+    // }
 
     const handleSubmit = (event:any) => {
         event.preventDefault();
@@ -62,25 +67,17 @@ function Home() {
                             Address
                         </label>
                     </div>
-                    {/*<input type="text" id="address" aria-describedby="helper-text-explanation"*/}
-                    {/*       className={"p-2.5 bg-opacity-20 bg-gray-400 border border-gray-600 text-white-900 text-sm rounded focus:border-white"}*/}
-                    {/*      />*/}
                     {error && <div id="warning" className="text-red-500 p-2 font-light">{error}</div>}
 
                 </div>
-                <div className="w-1/5">
-                    <select name="network" id="selectedNetwork" onChange={handleNetworkChange} className={"p-2.5 bg-opacity-20 bg-gray-400 border border-gray-600 text-white-900 text-sm rounded"}>
-                        <option value="zksync">ZKSYNC</option>
-                        <option value="scroll">SCROLL</option>
-                        <option value="linea">LINEA</option>
-                    </select>
+                <div className="">
+                    <Dropdown onSelect={handleNetworkSelect} />
                 </div>
             </div>
+
         </form>
-          {/*<button type="submit" onClick={handleSubmit}*/}
-          {/*        className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">*/}
-          {/*    &nbsp; View Stats &nbsp; &rarr; &nbsp;*/}
-          {/*</button>*/}
+
+
           <button type="submit" onClick={handleSubmit}
               className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-200 ">
               <span
@@ -88,7 +85,6 @@ function Home() {
                   &nbsp; View Stats &nbsp; &rarr; &nbsp;
               </span>
           </button>
-          {/*<button type="submit" onClick={handleSubmit} className={"p-2 border rounded-lg mt-10"}>&nbsp; View Stats &nbsp; &rarr; &nbsp; </button>*/}
       </div>
     </main>
   )

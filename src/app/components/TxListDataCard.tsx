@@ -3,7 +3,7 @@ import moment from "moment";
 import timeAgo from "@/app/utils/timeAgo";
 import {chainData} from "@/app/global/chainData";
 import {AiOutlineFileDone} from "react-icons/ai";
-import { MdOutlineErrorOutline } from "react-icons/md";
+import { MdOutlineErrorOutline, MdOutlinePending } from "react-icons/md";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 
@@ -38,7 +38,7 @@ function TxListDataCard({ txList , selectedNetwork }: { txList: Transaction[] , 
                             {index + 1} &nbsp;
                         </td>
                         <td className="px-2 py-4 font-medium text-white whitespace-nowrap">
-                            {transaction.status === "verified" ? <IoCheckmarkDoneCircleOutline className={"inline-block mr-2 text-green-500"}/> : <MdOutlineErrorOutline className={"inline-block mr-2 text-red-500"}/> }
+                            {transaction.status === "verified" ? <IoCheckmarkDoneCircleOutline className={"inline-block mr-2 text-green-500"}/> : transaction.status === "failed" ? <MdOutlineErrorOutline className={"inline-block mr-2 text-red-500"}/> :  <MdOutlinePending className={"inline-block mr-2 text-yellow-500"}/> }
                             <a href={`${chainData[selectedNetwork].hashLinkEndpoint}${transaction.transactionHash}`} className={"hover:text-blue-500 duration-200"}>
                                 {shortenTx(transaction.transactionHash, 10)}
                             </a>

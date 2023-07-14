@@ -34,29 +34,34 @@ export const chainData = {
         balanceDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=balance&address=${``}&tag=latest&apikey=${apiKeys.etherscanAPIKey}`,
         hashLinkEndpoint : `https://etherscan.io/tx/`,
         tokenTransferDataAPI : ``,
+        logo : './assets/chainLogos/ethereum.svg'
     },
     zkera: {
         txDataAPI : ``,
         balanceDataAPI : `https://zksync2-mainnet.zkscan.io/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
         tokenTransferDataAPI : ``,
+        logo : '/img/zksync.svg'
     },
     zklite: {
         txDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}/transactions?from=latest&limit=100&direction=older`,
         balanceDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}?stateType=finalized`,
         hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
         tokenTransferDataAPI : ``,
+        logo : ''
     },
     scroll: {
         txDataAPI : `https://blockscout.scroll.io/api?module=account&action=txlist&startblock=0&endblock=latest&sort=desc&address=`,
         balanceDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokentx&address=`,
+        logo: '/img/scroll.png'
     },
     linea: {
         txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
         balanceDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
+        logo: '/img/linea.svg'
     }
 };

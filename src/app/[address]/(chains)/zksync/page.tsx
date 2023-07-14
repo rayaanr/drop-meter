@@ -12,7 +12,7 @@ interface PageProps {
 
 export default function Page({ params }: PageProps) {
     const [transactionsList, setTransactionsList] = useState<Transaction[]>([]);
-    const [tokenList, setTokenList] = useState<Token[]>([]);
+    const [balanceList, setBalanceList] = useState<Token[]>([]);
 
     useEffect(() => {
         const fetchTransactions = async () => {
@@ -32,7 +32,7 @@ export default function Page({ params }: PageProps) {
             <div className={"pt-5"}></div>
 
             <div className={"pt-5 w-1/2 block m-auto z-10"}>
-                <SummaryCard txList={transactionsList} selectedNetwork={'zkera'}/>
+                <SummaryCard txList={transactionsList} selectedNetwork={'zkera'} balanceList={balanceList}/>
             </div>
 
             <div className={"p-5"}>

@@ -4,6 +4,8 @@ export interface Token {
     price: number;
     contractAddress: string;
     decimals: number;
+    balance: number;
+    type: string;
 }
 
 export interface Transfer {
@@ -25,7 +27,7 @@ export interface Transaction {
     status: "verified" | "failed" | "pending" | undefined;
     fee: number;    // in ETH
     isL1Originated: boolean;
-    method: string;
+    method: "out" | "in" | undefined;
     type: string | undefined;
     to: string;
     contractAddress: string;
