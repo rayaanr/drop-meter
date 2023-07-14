@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from "react";
 import { useRouter } from 'next/navigation';
-import Dropdown from "@/app/components/customElements/Dropdown";
+import {Dropdown} from "@/app/components/customElements/Dropdown";
 
 function Home() {
 
@@ -31,9 +31,6 @@ function Home() {
         setAddress(event.target.value);
     };
 
-    // const handleNetworkChange = (event:any) => {
-    //     setSelectedNetwork(event.target.value);
-    // }
 
     const handleSubmit = (event:any) => {
         event.preventDefault();

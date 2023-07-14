@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {chainData} from "@/app/global/chainData";
+import {chainData} from '@/app/global/chainData';
 
 interface Option {
     label: string;
@@ -44,7 +44,7 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
                 <button onClick={() => setIsOpen(!isOpen)} type="button"
                     className="text-white rounded text-sm w-24 py-2.5 text-center flex justify-center items-center bg-blue-600 hover:bg-blue-700 ">
                     {selectedOption ? (
-                        <span className={"flex"}>
+                        <span className={'flex'}>
                             <img src={selectedOption.image} alt={selectedOption.label} className="option-image w-[1.1rem]"/>
                             {selectedOption.label}
                         </span>
@@ -53,14 +53,15 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
 
                 {isOpen && (
                     <div className="absolute top-full z-10 mt-2 divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700 "
-                        style={{left: "50%", transform: "translateX(-50%)"}}>
+                        style={{left: '50%', transform: 'translateX(-50%)'}}>
                         <ul className="py-2 text-sm text-gray-200">
                             {options.map((option) => (
                                 <li key={option.value}>
                                     <button onClick={() => handleOptionClick(option)}
-                                            className="w-full px-4 py-2 hover:bg-gray-600 flex gap-2">
-                                        <div className={"rounded-full border border-white bg-black"}>
-                                        <img src={option.image} alt={option.label} className="option-image w-5 h-5 m-1 "/></div>
+                                        className="w-full px-4 py-2 hover:bg-gray-600 flex items-center gap-2">
+                                        <div className={'rounded-full border border-white bg-black'}>
+                                            <img src={option.image} alt={option.label} className="option-image w-5 h-5 m-1 "/>
+                                        </div>
                                         {option.label}
                                     </button>
                                 </li>
@@ -73,4 +74,4 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
     );
 };
 
-export default Dropdown;
+export {Dropdown};
