@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const Accordion = ({ children }) => {
+const Accordion = ({ children }: { children: React.ReactNode }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleAccordion = () => {
