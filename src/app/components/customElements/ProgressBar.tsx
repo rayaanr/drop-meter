@@ -4,7 +4,7 @@ import useEthPrice from "@/app/global/ethPrice";
 
 type ProgressBarProps = {
     progress: number;
-    type : "Interactions" | "Volume" | "Bridge" | "Balance" | "Activity" | undefined;
+    type : "Interactions" | "Volume" | "Bridge" | "Balance" | "Activity" |"ZkLite"| undefined;
 };
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
@@ -43,7 +43,19 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
         if ((progress / ethPrice) <= .005) {
             progress = 0;
         } else progress = 100;
+
+    } else if (type === "ZkLite") {
+        if (progress <= 3) {
+            progress = 0;
+        } else if (progress > 3 && progress <= 5) {
+            progress = 33;
+        } else if (progress > 5 && progress <= 10) {
+            progress = 66;
+        } else if (progress > 10) {
+            progress = 100;
+        }
     }
+
 
 
 
@@ -72,6 +84,3 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
 };
 
 export default ProgressBar;
-
-
-

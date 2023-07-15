@@ -41,7 +41,7 @@ export const chainData = {
         balanceDataAPI : `https://zksync2-mainnet.zkscan.io/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
         tokenTransferDataAPI : ``,
-        logo : '/img/zksync.svg'
+        logo : '/img/zksync1.png'
     },
     zklite: {
         txDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}/transactions?from=latest&limit=100&direction=older`,
@@ -55,13 +55,13 @@ export const chainData = {
         balanceDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokentx&address=`,
-        logo: '/img/scroll.png'
+        logo: '/img/scrollLogo.png'
     },
     linea: {
         txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
         balanceDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
-        logo: '/img/linea.svg'
+        logo: '/img/linea1.png'
     }
 };

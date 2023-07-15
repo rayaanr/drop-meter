@@ -7,12 +7,14 @@ import ProgressBar from "@/app/components/customElements/ProgressBar";
 import useEthPrice from "@/app/global/ethPrice";
 import {BalanceCardContent} from "@/app/components/customElements/fullDataItems/BalanceCardContent";
 import {ActivityCardContent} from "@/app/components/customElements/fullDataItems/ActivityCardContent";
+import ZkLiteActivityCard from "@/app/dataRetriever/ZkLiteActivityCard";
 
 
-function FullDataCard({txList, balanceList, selectedNetwork}: {
+function FullDataCard({txList, balanceList, selectedNetwork, address}: {
     txList: Transaction[],
     balanceList: Token[],
-    selectedNetwork: keyof typeof chainData
+    selectedNetwork: keyof typeof chainData,
+    address: string
 }) {
     const [interactionCount, setInteractionCount] = useState(0);
     const [totalVolume, setTotalVolume] = useState(0);
@@ -20,6 +22,11 @@ function FullDataCard({txList, balanceList, selectedNetwork}: {
     const [totalFee, setTotalFee] = useState(0);
     const activityData = ActivityData({transactionsList: txList});
     const ethPrice = useEthPrice();
+    const [zkLiteTxCount, setZkLiteTxCount] = useState<number>(0);
+
+    const handleZkLiteTxCountChange = (count: number) => {
+        setZkLiteTxCount(count);
+    };
 
     useEffect(() => {
         let count = 0;
@@ -97,7 +104,6 @@ function FullDataCard({txList, balanceList, selectedNetwork}: {
                                             token.contractAddress === "0x000000000000000000000000000000000000800a".toUpperCase()) &&
                                         token.price !== undefined
                                     ) {
-                                        console.log('prop', progress + Math.floor(token.balance * ethPrice));
                                         return progress + Math.floor(token.balance * ethPrice);
                                     }
                                     return progress;
@@ -114,10 +120,11 @@ function FullDataCard({txList, balanceList, selectedNetwork}: {
                     <td className="px-6 py-4">#</td>
                 </tr>
                 {selectedNetwork === 'zksync' && (
+
                     <tr className="border-b border-gray-500">
                         <th scope="row" className="px-6 py-4">zkLite</th>
-                        <td className="px-6 py-4"></td>
-                        <td className="px-6 py-4">-</td>
+                        <td className="px-2 py-2 "><ProgressBar progress={zkLiteTxCount} type={"ZkLite"}/></td>
+                        <td className="px-6 py-4"><ZkLiteActivityCard address={address} onZkLiteTxCountChange={handleZkLiteTxCountChange}/></td>
                     </tr>
                 )}
                 </tbody>

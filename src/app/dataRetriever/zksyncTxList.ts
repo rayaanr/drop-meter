@@ -28,7 +28,6 @@ const fetchTransactions = async (address: string): Promise<Transaction[]> => {
     const fetchTransactionsPage = async () => {
         const transactionResponse = await axios.get(`https://block-explorer-api.mainnet.zksync.io/transactions?address=${address}&limit=${limit}&page=${currentPageForTx}`);
         const transactionResult = transactionResponse.data;
-        console.log(transactionResult);
 
         const { items, meta } = transactionResult;
         allTransactionData.push(...items);
@@ -42,7 +41,6 @@ const fetchTransactions = async (address: string): Promise<Transaction[]> => {
     const fetchTransfersPage = async () => {
         const transferResponse = await axios.get(`https://block-explorer-api.mainnet.zksync.io/address/${address}/transfers?limit=${limit}&page=${currentPageForTransfer}`);
         const transferResult = transferResponse.data;
-        console.log(transferResult);
 
         const { items, meta } = transferResult;
         allTransferData.push(...items);
@@ -138,7 +136,6 @@ const fetchTransactions = async (address: string): Promise<Transaction[]> => {
             }
         }
 
-        console.log(transactionsList);
         return transactionsList;
     } catch (error) {
         console.error("Error fetching data:", error);
