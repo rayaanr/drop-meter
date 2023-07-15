@@ -7,7 +7,7 @@ import ProgressBar from "@/app/components/customElements/ProgressBar";
 import useEthPrice from "@/app/global/ethPrice";
 import {BalanceCardContent} from "@/app/components/customElements/fullDataItems/BalanceCardContent";
 import {ActivityCardContent} from "@/app/components/customElements/fullDataItems/ActivityCardContent";
-import {ZkLiteCardContent} from "@/app/components/customElements/fullDataItems/ZkLiteCardContent";
+
 
 function FullDataCard({txList, balanceList, selectedNetwork}: {
     txList: Transaction[],
@@ -88,7 +88,24 @@ function FullDataCard({txList, balanceList, selectedNetwork}: {
                 </tr>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="px-6 py-4">Balance</th>
-                    <td className="px-6 py-4">-</td>
+                    <td className="px-2 py-2">
+                        <ProgressBar
+                            progress={
+                                balanceList.reduce((progress, token) => {
+                                    if (
+                                        (token.contractAddress === "0x000000000000000000000000000000000000800a" || '0x0000000000000000000000000000000000000000' ||
+                                            token.contractAddress === "0x000000000000000000000000000000000000800a".toUpperCase()) &&
+                                        token.price !== undefined
+                                    ) {
+                                        console.log('prop', progress + Math.floor(token.balance * ethPrice));
+                                        return progress + Math.floor(token.balance * ethPrice);
+                                    }
+                                    return progress;
+                                }, 0)
+                            }
+                            type={"Balance"}
+                        />
+                    </td>
                     <td className="px-6 py-4"><BalanceCardContent balanceList={balanceList}/></td>
                 </tr>
                 <tr className="border-b border-gray-500">
@@ -100,14 +117,13 @@ function FullDataCard({txList, balanceList, selectedNetwork}: {
                     <tr className="border-b border-gray-500">
                         <th scope="row" className="px-6 py-4">zkLite</th>
                         <td className="px-6 py-4"></td>
-                        <td className="px-6 py-4"><ZkLiteCardContent activityData={null}/></td>
+                        <td className="px-6 py-4">-</td>
                     </tr>
                 )}
                 </tbody>
             </table>
         </div>
     );
-
 }
 
 export default FullDataCard;

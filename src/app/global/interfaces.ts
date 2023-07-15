@@ -1,7 +1,8 @@
 export interface Token {
+    name: string;
     address: string;
     symbol: string;
-    price: number;
+    price: number | undefined;
     contractAddress: string;
     decimals: number;
     balance: number;

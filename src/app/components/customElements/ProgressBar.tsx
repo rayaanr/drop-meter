@@ -1,4 +1,6 @@
 import React from 'react';
+import ethPrice from "@/app/global/ethPrice";
+import useEthPrice from "@/app/global/ethPrice";
 
 type ProgressBarProps = {
     progress: number;
@@ -7,6 +9,7 @@ type ProgressBarProps = {
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
     let colorClass = '';
+    const ethPrice = useEthPrice()
 
 
 
@@ -37,7 +40,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
             progress = 100;
         }
     } else if (type === "Balance") {
-        if (progress <= .005) {
+        if ((progress / ethPrice) <= .005) {
             progress = 0;
         } else progress = 100;
     }

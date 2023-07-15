@@ -5,6 +5,7 @@ import zksyncTxList from "@/app/dataRetriever/zksyncTxList";
 import { TxListDataCard } from "@/app/components/TxListDataCard";
 import FullDataCard from "@/app/components/FullDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
+import zkSyncBalanceList from "@/app/dataRetriever/zkSyncBalanceList";
 
 interface PageProps {
     params: { address: string };
@@ -20,6 +21,10 @@ export default function Page({ params }: PageProps) {
                 const retrievedTransactions = await zksyncTxList(params.address);
                 setTransactionsList(retrievedTransactions);
 
+                const retrievedBalance = await zkSyncBalanceList(params.address);
+                setBalanceList(retrievedBalance);
+                console.log(retrievedBalance);
+
             } catch (error) {
                 console.log(error);
             }
@@ -29,9 +34,7 @@ export default function Page({ params }: PageProps) {
 
     return (
         <div>
-            <div className={"pt-5"}></div>
-
-            <div className={"pt-5 w-1/2 block m-auto z-10"}>
+            <div className={"pt-5 p-5 block m-auto z-10 lg:w-1/2 md:w-3/4 sm:w-full"}>
                 <FullDataCard txList={transactionsList} selectedNetwork={'zksync'} balanceList={balanceList}/>
             </div>
 
