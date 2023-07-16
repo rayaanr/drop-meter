@@ -19,9 +19,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
         else if (progress >= 10 && progress < 25) {progress = 50;}
         else if (progress >= 25 && progress < 100) {progress = 75;}
         else if (progress >= 100) {progress = 100;}
-    }else if (type === "Volume") {
+    }else if (type === "Volume" || type === "Bridge") {
         if (progress < 10000) {
-            progress = 0;
+            progress = 10;
         } else if (progress >= 10000 && progress <= 50000) {
             progress = 33;
         } else if (progress > 50000 && progress <= 250000) {
@@ -57,11 +57,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
     }
 
 
-
-
-
-
-    if (progress >= 0 && progress <= 25) {
+    if (progress === 0) {
+        colorClass = 'border-red-500';
+    } else if (progress >= 0 && progress <= 25) {
         colorClass = 'bg-red-500';
     } else if (progress > 25 && progress <= 50) {
         colorClass = 'bg-orange-500';

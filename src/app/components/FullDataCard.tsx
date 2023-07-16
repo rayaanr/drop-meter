@@ -7,7 +7,7 @@ import ProgressBar from "@/app/components/customElements/ProgressBar";
 import useEthPrice from "@/app/global/ethPrice";
 import {BalanceCardContent} from "@/app/components/customElements/fullDataItems/BalanceCardContent";
 import {ActivityCardContent} from "@/app/components/customElements/fullDataItems/ActivityCardContent";
-import ZkLiteActivityCard from "@/app/dataRetriever/ZkLiteActivityCard";
+import ZkLiteActivityCard from "@/app/dataRetriever/zkSync/ZkLiteActivityCard";
 
 
 function FullDataCard({txList, balanceList, selectedNetwork, address}: {
@@ -21,6 +21,8 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
     const [ethVolume, setETHVolume] = useState(0);
     const [totalFee, setTotalFee] = useState(0);
     const activityData = ActivityData({transactionsList: txList});
+    const [bridgeInAmount, setBridgeInAmount] = useState(0);
+    const [bridgeOutAmount, setBridgeOutAmount] = useState(0);
     const ethPrice = useEthPrice();
     const [zkLiteTxCount, setZkLiteTxCount] = useState<number>(0);
 
@@ -33,21 +35,34 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
         let volume = 0;
         let ethVolume = 0;
         let fees = 0;
+        let bridgeInAmount = 0;
+        let bridgeOutAmount = 0;
 
         for (const transaction of txList) {
             if (transaction.status === "verified" && transaction.method !== "in") {
                 count += 1;
+                volume += transaction.valueInUSD;
+                fees += transaction.fee;
             }
-            volume += transaction.valueInUSD;
+
             if (transaction.value.includes("ETH")) {
                 ethVolume += transaction.valueInUSD;
             }
-            fees += transaction.fee;
+
+
+            if (transaction.type === 'bridgeIn') {
+                bridgeInAmount += transaction.valueInUSD;
+            } else if (transaction.type === 'bridgeOut') {
+                bridgeOutAmount += transaction.valueInUSD;
+            }
+
         }
         setInteractionCount(count);
         setTotalVolume(volume);
         setETHVolume(ethVolume);
         setTotalFee(fees);
+        setBridgeInAmount(bridgeInAmount);
+        setBridgeOutAmount(bridgeOutAmount);
     }, [txList]);
 
 
@@ -80,8 +95,11 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                 </tr>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="px-6 py-4">Bridge</th>
-                    <td className="px-6 py-4">-</td>
-                    <td className="px-6 py-4">#</td>
+                    <td className="px-2 py-2"><ProgressBar progress={bridgeInAmount} type={"Bridge"}/></td>
+                    <td className="px-6 py-4">
+                        bridgeIn: {bridgeInAmount.toFixed(2)} <br/>
+                        bridgeOut: {bridgeOutAmount.toFixed(2)}
+                    </td>
                 </tr>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="px-6 py-4">Fee</th>
@@ -90,7 +108,7 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                 </tr>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="px-6 py-4">Activity</th>
-                    <td className="px-2 py-2 "><ProgressBar progress={activityData.uniqueMonthsCount} type={"Activity"}/></td>
+                    <td className="px-2 py-2"><ProgressBar progress={activityData.uniqueMonthsCount} type={"Activity"}/></td>
                     <td className="px-6 py-4 leading-loose"><ActivityCardContent activityData={activityData}/></td>
                 </tr>
                 <tr className="border-b border-gray-500">

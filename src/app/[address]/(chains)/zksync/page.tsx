@@ -1,12 +1,12 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import zksyncTxList from "@/app/dataRetriever/zksyncTxList";
+import zksyncTxList from "@/app/dataRetriever/zkSync/zksyncTxList";
 import { TxListDataCard } from "@/app/components/TxListDataCard";
 import FullDataCard from "@/app/components/FullDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
-import zkSyncBalanceList from "@/app/dataRetriever/zkSyncBalanceList";
-import {getZkLiteData} from "@/app/dataRetriever/ZkLiteData";
+import zkSyncBalanceList from "@/app/dataRetriever/zkSync/zkSyncBalanceList";
+import {getZkLiteData} from "@/app/dataRetriever/zkSync/ZkLiteData";
 
 interface PageProps {
     params: { address: string };

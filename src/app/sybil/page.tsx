@@ -20,8 +20,8 @@ export default function YourComponent() {
             const arbSybilFile = await fetchCSVData('/sybilList/HopSybilList.csv');
             const opSybilFile = await fetchCSVData('/sybilList/OPSybilList.csv');
 
-            setIsDataInArbList(arbSybilFile.includes(enteredData));
-            setIsDataInOpList(opSybilFile.includes(enteredData));
+            setIsDataInArbList(arbSybilFile.includes(enteredData.toLowerCase()));
+            setIsDataInOpList(opSybilFile.includes(enteredData.toLowerCase()));
         } catch (error) {
             console.error('Error occurred while checking data:', error);
         } finally {

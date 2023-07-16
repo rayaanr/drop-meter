@@ -55,7 +55,13 @@ export const chainData = {
         balanceDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokenlist&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokentx&address=`,
-        logo: '/img/scrollLogo.png'
+        logo: '/img/scrollLogo.png',
+        protocols: [{
+            scrollBridgeIn : '',
+            scrollBridgeOut : '0x6d79aa2e4fbf80cf8543ad97e294861853fb0649',
+            scrollScanFaucet : '0xb8e0eBcea9418720192F0A88526854f02b1F77E6',
+            orbiterBridgeIn : '0xa08606a85bf58afb7c3d464fc6cf78a159933dd1',
+        }]
     },
     linea: {
         txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
