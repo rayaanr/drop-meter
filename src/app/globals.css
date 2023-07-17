@@ -30,8 +30,17 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+
 @layer components {
     .cell-style {
         @apply lg:px-6 md:px-6 sm:px-0.5 lg:py-4 md:py-4 sm:py-0.5 pt-3 pb-3 ;
+    }
+
+    .gray-text {
+        @apply text-gray-400 text-xs mr-2 px-1 py-0.5 ;
+    }
+
+    .gray-badge {
+        @apply text-gray-400 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border border-gray-500;
     }
 }

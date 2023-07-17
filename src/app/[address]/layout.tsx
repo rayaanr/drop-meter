@@ -22,7 +22,7 @@ export default function AddressLayout({ children, params }: PageProps) {
         <>
             <div className={'pb-5 flex justify-between'} style={{paddingTop:"80px"}}>
                 <div>Address: {params.address.substring(0, 5)}...{params.address.substring(params.address.length - 5)}</div>
-                <div className="fixed top-[72px] right-7 m-3" style={{zIndex:999}}>
+                <div className="fixed top-[72px] right-7 m-3 z-40">
                     <Dropdown onSelect={handleNetworkSelect} />
                 </div>
             </div>

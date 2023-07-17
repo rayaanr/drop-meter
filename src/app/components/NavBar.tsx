@@ -18,7 +18,7 @@ const TopNav = () => {
 
     return (
         <>
-            <nav className="backdrop-blur bg-black bg-opacity-75 border-b border-gray-600 fixed h-[55px] w-full z-50">
+            <nav className="backdrop-blur bg-black bg-opacity-75 border-b border-gray-600 fixed w-full z-50">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <a href="/" className="flex items-center">
                         <Image src={"/DropMeterLogo.png"} alt={"DropMeterLogo"} width={120} height={50}/>
@@ -34,7 +34,7 @@ const TopNav = () => {
 
 
                         <button onClick={handleNavbarToggle} type="button" aria-controls="navbar-search" aria-expanded={isNavbarOpen ? "true" : "false"}
-                            className="inline-flex items-center p-1 w-8 h-8 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+                            className="inline-flex items-center p-1 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
                             <span className="sr-only">Open main menu</span>
                             <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>

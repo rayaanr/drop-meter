@@ -8,13 +8,13 @@ import useEthPrice from "@/app/global/ethPrice";
 import {BalanceCardContent} from "@/app/components/customElements/fullDataItems/BalanceCardContent";
 import {ActivityCardContent} from "@/app/components/customElements/fullDataItems/ActivityCardContent";
 import ZkLiteActivityCard from "@/app/dataRetriever/zkSync/ZkLiteActivityCard";
-
+import { motion } from "framer-motion"
 
 function FullDataCard({txList, balanceList, selectedNetwork, address}: {
     txList: Transaction[],
     balanceList: Token[],
     selectedNetwork: keyof typeof chainData,
-    address: string
+    address: string,
 }) {
     const [interactionCount, setInteractionCount] = useState(0);
     const [totalVolume, setTotalVolume] = useState(0);
@@ -67,6 +67,14 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
 
 
     return (
+        <>
+            <motion.div
+                animate={{
+                    scale: [0.9, 1],
+                    opacity: [0, 0.5, 1],
+            }}
+                transition={{ duration: 1}}
+            >
         <div className="relative overflow-x-auto">
             <table className="w-full text-sm text-left backdrop-blur">
                 <tbody>
@@ -80,14 +88,14 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                     <td className="px-2 py-2 "><ProgressBar progress={Math.floor(totalVolume)} type={"Volume"}/></td>
                     <td className="cell-style">
                         <table>
-                            <tbody>
+                            <tbody className={"leading-loose"}>
                             <tr className="">
-                                <td scope="row" className="px-0 py-0">Total</td>
-                                <td className="px-6 py-0">${totalVolume.toFixed(2)} ( {(totalVolume/ethPrice).toFixed(4)} Ξ )</td>
+                                <td scope="row" className="px-0 py-0 font-light text-xs">Total</td>
+                                <td className="px-6 py-0">${totalVolume.toFixed(2)} <span className={"gray-text"}>({(totalVolume/ethPrice).toFixed(4)} Ξ)</span></td>
                             </tr>
                             <tr className="">
-                                <td scope="row" className="px-0 py-0">ETH</td>
-                                <td className="px-6 py-0">${ethVolume.toFixed(2)} ( {(ethVolume/ethPrice).toFixed(4)} Ξ )</td>
+                                <td scope="row" className="px-0 py-0 font-light text-xs">ETH</td>
+                                <td className="px-6 py-0">${ethVolume.toFixed(2)} <span className={"gray-text"}>({(ethVolume/ethPrice).toFixed(4)} Ξ)</span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -97,14 +105,24 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                     <th scope="row" className="cell-style">Bridge</th>
                     <td className="px-2 py-2"><ProgressBar progress={bridgeInAmount} type={"Bridge"}/></td>
                     <td className="cell-style">
-                        bridgeIn: {bridgeInAmount.toFixed(2)} <br/>
-                        bridgeOut: {bridgeOutAmount.toFixed(2)}
+                        <table className={"leading-loose"}>
+                            <tbody>
+                            <tr className="">
+                                <td scope="row" className="px-0 py-0 font-light text-xs">In</td>
+                                <td className="px-6 py-0">${bridgeInAmount.toFixed(2)} <span className={"gray-text"}>({(bridgeInAmount/ethPrice).toFixed(4)} Ξ)</span></td>
+                            </tr>
+                            <tr className="">
+                                <td scope="row" className="px-0 py-0 font-light text-xs">Out</td>
+                                <td className="px-6 py-0">${bridgeOutAmount.toFixed(2)} <span className={"gray-text"}>({(bridgeOutAmount/ethPrice).toFixed(4)} Ξ)</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="cell-style">Fee</th>
                     <td className="px-6 py-4"></td>
-                    <td className="cell-style">{totalFee.toFixed(5)} ETH (${(totalFee*ethPrice).toFixed(2)})</td>
+                    <td className="cell-style">${(totalFee*ethPrice).toFixed(2)}<span className={"gray-text"}>({totalFee.toFixed(5)} Ξ)</span></td>
                 </tr>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="cell-style">Activity</th>
@@ -148,6 +166,9 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                 </tbody>
             </table>
         </div>
+                </motion.div>
+        </>
+
     );
 }
 

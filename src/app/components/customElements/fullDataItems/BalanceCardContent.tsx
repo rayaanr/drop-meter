@@ -22,30 +22,52 @@ const BalanceCardContent = ({ balanceList }: { balanceList: Token[] }) => {
         <Accordion>
             <AccordionHeader>
                 <table>
-                    <tbody>
+                    <tbody className={"leading-loose"}>
                     <tr className="">
-                        <td scope="row" className="px-0 py-0">Total</td>
-                        <td className="px-6 py-0">{totalBalance.toFixed(2)}</td>
+                        <td scope="row" className="px-0 py-0 font-light text-xs">Total</td>
+                        <td className="px-6 py-0">${totalBalance.toFixed(2)}</td>
                     </tr>
                     <tr className="">
-                        <td scope="row" className="px-0 py-0">ETH</td>
-                        <td className="px-6 py-0">{ethBalance?.toFixed(4)}</td>
+                        <td scope="row" className="px-0 py-0 font-light text-xs">ETH</td>
+                        <td className="px-6 py-0">{ethBalance?.toFixed(4)} Ξ</td>
                     </tr>
                     </tbody>
                 </table>
             </AccordionHeader>
             <AccordionContent>
-                {balanceList.map((token, index) => {
-                    return (
-                        <div key={index} className="flex items-center leading-loose">
-                            <p>{token.balance % 1 !== 0 ? token.balance.toFixed(2) : token.balance}</p>
-                            <p>&nbsp;{token.symbol}</p>
-                            <p>{token.name}</p>
-                            <p>{token.price !== undefined ? (token.price * token.balance ).toFixed(2) : undefined}</p>
-                            <p className="text-gray-400 text-xs mr-1 px-1 rounded border border-gray-500">{token.type}</p>
-                        </div>
-                    );
-                })}
+                        <>
+                            <table className={"mt-2"}>
+                                <tbody>
+                                {balanceList.map((token, index) => {
+                                    if (token.name) {
+                                        return (
+                                            <tr className="" key={index}>
+                                                <td scope="row" className="px-0 py-0">
+                                                    {token.name.length > 20 ? `${token.name.substring(0, 20)}...` : token.name}
+                                                </td>
+                                                <td className="px-3 py-0 leading-relaxed">
+                                                    {token.balance % 1 !== 0 ? token.balance.toFixed(2) : token.balance}
+                                                    {token.price !== undefined && token.type==='ERC-20'
+                                                        ? <span className="gray-text">(${(token.price * token.balance).toFixed(2)})</span>
+                                                        :<span className="gray-text">(NFT)</span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        );
+                                    } else {
+                                        return null;
+                                    }
+                                })}
+                                </tbody>
+                            </table>
+
+                            {/*<p>{token.balance % 1 !== 0 ? token.balance.toFixed(2) : token.balance}</p>*/}
+                            {/*<p>&nbsp;{token.symbol}</p>*/}
+                            {/*<p>{token.name}</p>*/}
+                            {/*<p>{token.price !== undefined ? (token.price * token.balance ).toFixed(2) : undefined}</p>*/}
+                            {/*<p className="text-gray-400 text-xs mr-1 px-1 rounded border border-gray-500">{token.type}</p>*/}
+                        </>
+
             </AccordionContent>
         </Accordion>
     );

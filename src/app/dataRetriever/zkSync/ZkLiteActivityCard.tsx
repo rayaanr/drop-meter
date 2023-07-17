@@ -80,26 +80,50 @@ const ZkLiteActivityCard: FC<ZkLiteActivityCardProps> = ({ address,onZkLiteTxCou
 
     return (
         <>
+
             {/*{data && data.nonce !== null && `Interactions: ${data.nonce}`}*/}
-            {data && zkLiteTxCount !== null && `Interactions: ${zkLiteTxCount}`}<br/>
-            {data && data.latestTransactionDate !== null && `Last Activity: ${getTimeAgo(data.latestTransactionDate)}`}<br/>
-            {changePubKeyDate !== null && `Activated On: ${getTimeAgo(changePubKeyDate)}`}<br/>
-            {data && data.tokenBalances !== null && (
-                <>
-                    {Object.entries(data.tokenBalances).map(([token, balance]) => (
-                        <div key={token} className="mr-2 bg-gray-700 p-1 text-sm rounded">
-                            {token === 'ETH' ? (parseFloat(balance as string) * 1e-18).toFixed(5) : (parseFloat(balance as string) * 1e-6).toFixed(2)} {token}
-                        </div>
-                    ))}
-                </>
-            )}
-            {nfts.map((nft) => (
-                <div key={nft.id} className="mr-2 bg-gray-700 p-1 text-sm rounded">
-                    {nft.symbol}
-                </div>
-            ))}
-            {/*<div>Pagination Count: {zkLiteTxCount}</div>*/}
-            {/*<div>Total Fee: {totalFee}</div>*/}
+            <table>
+                <tbody className={"leading-loose"}>
+                {data && zkLiteTxCount !== null && (
+                    <tr>
+                        <td className={"font-light text-xs"}>Interactions</td>
+                        <td className={"px-3"}>{zkLiteTxCount}</td>
+                    </tr>
+                )}
+                {data && data.latestTransactionDate !== null && (
+                    <tr>
+                        <td className={"font-light text-xs"}>Last Activity</td>
+                        <td className={"px-3"}>{getTimeAgo(data.latestTransactionDate)}</td>
+                    </tr>
+                )}
+                {changePubKeyDate !== null && (
+                    <tr>
+                        <td className={"font-light text-xs"}>Activated On</td>
+                        <td className={"px-3"}>{getTimeAgo(changePubKeyDate)}</td>
+                    </tr>
+                )}
+                {data && data.tokenBalances !== null && (
+                    <tr>
+                        <td className={"font-light text-xs"}>Balances</td>
+                        <td className={"px-3"}>
+                            {Object.entries(data.tokenBalances).map(([token, balance]) => (
+                                <div key={token} className="gray-badge w-fit m-1">
+                                    {token === 'ETH'
+                                        ? (parseFloat(balance as string) * 1e-18).toFixed(5)
+                                        : (parseFloat(balance as string) * 1e-6).toFixed(2)}{' '}
+                                    {token}
+                                </div>
+                            ))}
+                            {nfts.map((nft) => (
+                                <div key={nft.id} className="gray-badge w-fit m-1">
+                                    {nft.symbol}
+                                </div>
+                                ))}
+                        </td>
+                    </tr>
+                )}
+                </tbody>
+            </table>
         </>
     );
 };

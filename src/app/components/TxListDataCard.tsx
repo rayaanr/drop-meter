@@ -57,7 +57,7 @@ function TxListDataCard({ txList , selectedNetwork }: { txList: Transaction[] , 
                             {shortenTx(transaction.initiatorAddress, 10)} &nbsp;&rarr;&nbsp; {shortenTx(transaction.contractAddress, 10)}
                         </td>
                         <td className="px-6 py-4 flex justify-between">
-                            {(transaction.value === "") ? <span>-</span> : <span className={"text-gray-400 text-xs font-medium mr-2 px-2.5 py-0.5 rounded border border-gray-500"}>{transaction.value} </span>}
+                            {(transaction.value === "") ? <span>-</span> : <span className={"gray-badge"}>{transaction.value} </span>}
                             {transaction.valueInUSD === 0 ? <span>-</span> : <span>${transaction.valueInUSD} </span>}
                         </td>
                         <td className="px-6 py-4">
