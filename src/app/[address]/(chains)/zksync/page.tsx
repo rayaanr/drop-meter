@@ -39,7 +39,7 @@ export default function Page({ params }: PageProps) {
 
     return (
         <div>
-            <div className={"pt-5 p-5 block m-auto z-10 lg:w-1/2 md:w-3/4 sm:w-full"}>
+            <div className={"pt-5 p-5 block m-auto lg:w-1/2 md:w-3/4 sm:w-full"}>
                 <FullDataCard txList={transactionsList} selectedNetwork={'zksync'} balanceList={balanceList} address={params.address}/>
             </div>
 

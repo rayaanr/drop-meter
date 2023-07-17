@@ -4,7 +4,6 @@ import React, {useState} from "react";
 import {Dropdown} from "@/app/components/customElements/Dropdown";
 import { useRouter } from 'next/navigation';
 
-
 interface PageProps {
     children: React.ReactNode;
     params: { address: string };
@@ -20,14 +19,14 @@ export default function AddressLayout({ children, params }: PageProps) {
     };
 
     return (
-        <section>
-            <div className={'p-24 pb-5 flex justify-between border-2 border-white'}>
-                <div>Address: {params.address}</div>
-                <div className="">
+        <>
+            <div className={'pb-5 flex justify-between'} style={{paddingTop:"80px"}}>
+                <div>Address: {params.address.substring(0, 5)}...{params.address.substring(params.address.length - 5)}</div>
+                <div className="fixed top-[72px] right-7 m-3" style={{zIndex:999}}>
                     <Dropdown onSelect={handleNetworkSelect} />
                 </div>
             </div>
             {children}
-        </section>
+        </>
     );
 }

@@ -68,17 +68,17 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
 
     return (
         <div className="relative overflow-x-auto">
-            <table className="w-full text-sm text-left">
+            <table className="w-full text-sm text-left backdrop-blur">
                 <tbody>
                 <tr className="border-b border-gray-500">
-                    <th scope="row" className="px-6 py-4">Interactions</th>
-                    <td className="px-2 py-2 "><ProgressBar progress={interactionCount} type={"Interactions"}/></td>
-                    <td className="px-6 py-4">{interactionCount}</td>
+                    <th scope="row" className="cell-style">Interactions</th>
+                    <td className="px-2 py-2"><ProgressBar progress={interactionCount} type={"Interactions"}/></td>
+                    <td className="cell-style">{interactionCount}</td>
                 </tr>
                 <tr className="border-b border-gray-500">
-                    <th scope="row" className="px-6 py-4">Aggregate Value</th>
+                    <th scope="row" className="cell-style">Aggregate Value</th>
                     <td className="px-2 py-2 "><ProgressBar progress={Math.floor(totalVolume)} type={"Volume"}/></td>
-                    <td className="px-6 py-4 leading-relaxed">
+                    <td className="cell-style">
                         <table>
                             <tbody>
                             <tr className="">
@@ -94,25 +94,25 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                     </td>
                 </tr>
                 <tr className="border-b border-gray-500">
-                    <th scope="row" className="px-6 py-4">Bridge</th>
+                    <th scope="row" className="cell-style">Bridge</th>
                     <td className="px-2 py-2"><ProgressBar progress={bridgeInAmount} type={"Bridge"}/></td>
-                    <td className="px-6 py-4">
+                    <td className="cell-style">
                         bridgeIn: {bridgeInAmount.toFixed(2)} <br/>
                         bridgeOut: {bridgeOutAmount.toFixed(2)}
                     </td>
                 </tr>
                 <tr className="border-b border-gray-500">
-                    <th scope="row" className="px-6 py-4">Fee</th>
+                    <th scope="row" className="cell-style">Fee</th>
                     <td className="px-6 py-4"></td>
-                    <td className="px-6 py-4">{totalFee.toFixed(5)} ETH (${(totalFee*ethPrice).toFixed(2)})</td>
+                    <td className="cell-style">{totalFee.toFixed(5)} ETH (${(totalFee*ethPrice).toFixed(2)})</td>
                 </tr>
                 <tr className="border-b border-gray-500">
-                    <th scope="row" className="px-6 py-4">Activity</th>
+                    <th scope="row" className="cell-style">Activity</th>
                     <td className="px-2 py-2"><ProgressBar progress={activityData.uniqueMonthsCount} type={"Activity"}/></td>
-                    <td className="px-6 py-4 leading-loose"><ActivityCardContent activityData={activityData}/></td>
+                    <td className="cell-style"><ActivityCardContent activityData={activityData}/></td>
                 </tr>
                 <tr className="border-b border-gray-500">
-                    <th scope="row" className="px-6 py-4">Balance</th>
+                    <th scope="row" className="cell-style">Balance</th>
                     <td className="px-2 py-2">
                         <ProgressBar
                             progress={
@@ -130,19 +130,19 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                             type={"Balance"}
                         />
                     </td>
-                    <td className="px-6 py-4"><BalanceCardContent balanceList={balanceList}/></td>
+                    <td className="cell-style"><BalanceCardContent balanceList={balanceList}/></td>
                 </tr>
                 <tr className="border-b border-gray-500">
-                    <th scope="row" className="px-6 py-4">Protocols</th>
+                    <th scope="row" className="cell-style">Protocols</th>
                     <td className="px-6 py-4"></td>
-                    <td className="px-6 py-4">#</td>
+                    <td className="cell-style">#</td>
                 </tr>
                 {selectedNetwork === 'zksync' && (
 
                     <tr className="border-b border-gray-500">
-                        <th scope="row" className="px-6 py-4">zkLite</th>
+                        <th scope="row" className="cell-style">zkLite</th>
                         <td className="px-2 py-2 "><ProgressBar progress={zkLiteTxCount} type={"ZkLite"}/></td>
-                        <td className="px-6 py-4"><ZkLiteActivityCard address={address} onZkLiteTxCountChange={handleZkLiteTxCountChange}/></td>
+                        <td className="cell-style"><ZkLiteActivityCard address={address} onZkLiteTxCountChange={handleZkLiteTxCountChange}/></td>
                     </tr>
                 )}
                 </tbody>

@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useRouter } from 'next/navigation';
 import {Dropdown} from "@/app/components/customElements/Dropdown";
 
@@ -47,8 +47,9 @@ function Home() {
     };
 
   return (
+      <>
     <main className={"flex justify-center items-center h-full text-center"} style={{height: "100dvh", width: "100dvw"}}>
-      <div className={"lg:w-1/2 md:w-3/4 sm:w-full pt-10"}>
+      <div className={"lg:w-9/12 md:w-3/4 sm:w-full pt-10"}>
           <h1 className="title mb-14 pb-2.5 text-6xl font-bold leading-snug tracking-tight text-gray-900 ">
               Get Stats. Increase Points.<br/>Be Eligible.
           </h1>
@@ -84,6 +85,7 @@ function Home() {
           {error && <div id="warning" className="text-red-500 p-2 font-light">{error}</div>}
       </div>
     </main>
+          </>
   )
 }
 

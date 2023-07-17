@@ -7,20 +7,20 @@ const ActivityCardContent = ({ activityData }: { activityData : any }) => {
         <table>
             <tbody>
             <tr className="">
-                <td scope="row" className="px-0 py-0">Last activity</td>
-                <td className="px-6 py-0">{getTimeAgo(activityData.lastTransactionDate)}</td>
+                <td scope="row" className="px-0 py-0">Latest</td>
+                <td className="cell-style pt-0 pb-0">{getTimeAgo(activityData.lastTransactionDate)}</td>
             </tr>
             <tr className="">
-                <td scope="row" className="px-0 py-0">Active day(s)</td>
-                <td className="px-6 py-0">{activityData.uniqueDaysCount}</td>
+                <td scope="row" className="px-0 py-0">Day(s)</td>
+                <td className="cell-style pt-0 pb-0">{activityData.uniqueDaysCount}</td>
             </tr>
             <tr className="">
-                <td scope="row" className="px-0 py-0">Active week(s)</td>
-                <td className="px-6 py-0">{activityData.uniqueWeeksCount}</td>
+                <td scope="row" className="px-0 py-0">Week(s)</td>
+                <td className="cell-style pt-0 pb-0">{activityData.uniqueWeeksCount}</td>
             </tr>
             <tr className="">
-                <td scope="row" className="px-0 py-0">Active months(s)</td>
-                <td className="px-6 py-0">
+                <td scope="row" className="px-0 py-0">Months(s)</td>
+                <td className="cell-style pt-0 pb-0">
                     {activityData.uniqueMonthsCount}
                     {activityData.uniqueMonths.length > 0 && (
                         <span className={"text-gray-400 text-xs mr-2 px-2.5 py-0.5"}>

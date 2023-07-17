@@ -1,6 +1,9 @@
+'use client'
+
 import React, {useState} from 'react';
 import {chainData} from '@/app/global/chainData';
 import Image from "next/image";
+import { FaPlus } from 'react-icons/fa';
 
 interface Option {
     label: string;
@@ -13,8 +16,6 @@ interface CustomDropdownProps {
 }
 
 const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<Option | null>(null);
     const options: Option[] = [
         {
             label: 'ZkSync',
@@ -33,6 +34,9 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
         },
     ];
 
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState<Option | null>(options[0]);
+
     const handleOptionClick = (option: Option) => {
         setSelectedOption(option);
         setIsOpen(false);
@@ -43,7 +47,7 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
         <>
             <div className="relative">
                 <button onClick={() => setIsOpen(!isOpen)} type="button"
-                    className="text-white rounded text-sm w-24 py-2.5 text-center flex justify-center items-center bg-blue-600 hover:bg-blue-700 ">
+                    className="text-white rounded text-sm w-24 py-2.5 text-center flex justify-center items-center bg-blue-600 hover:bg-blue-700">
                     {selectedOption ? (
                         <span className={'flex'}>
                             <Image src={selectedOption.image} alt={selectedOption.label} className="option-image w-[1.1rem]" height={100} width={100}/>
@@ -53,9 +57,9 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
                 </button>
 
                 {isOpen && (
-                    <div className="absolute top-full z-10 mt-2 divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700 "
+                    <div className="absolute top-full mt-2 divide-y divide-gray-100 rounded-lg shadow bg-gray-700 "
                         style={{left: '50%', transform: 'translateX(-50%)'}}>
-                        <ul className="py-2 text-sm text-gray-200">
+                        <ul className="py-2 text-sm text-gray-200 w-32">
                             {options.map((option) => (
                                 <li key={option.value}>
                                     <button onClick={() => handleOptionClick(option)}
