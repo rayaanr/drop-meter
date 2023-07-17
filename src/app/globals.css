@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: linear-gradient(to right top, #004453, #1c3144, #21202e, #191318, #000000);
+    /*background-image: linear-gradient(to right top, #004453, #1c3144, #21202e, #191318, #000000);*/
     color: white;
     min-height: 100dvh;
     width: 100dvw;

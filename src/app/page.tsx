@@ -47,14 +47,14 @@ function Home() {
     };
 
   return (
-    <main className={"flex justify-center items-center h-full text-center"} style={{height: "100dvh"}}>
-      <div className={"w-1/2 md:w-3/4 sm:w-2/3"}>
-          <h1 className="title mb-20 pb-2.5 text-5xl font-bold leading-snug tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+    <main className={"flex justify-center items-center h-full text-center"} style={{height: "100dvh", width: "100dvw"}}>
+      <div className={"lg:w-1/2 md:w-3/4 sm:w-full pt-10"}>
+          <h1 className="title mb-14 pb-2.5 text-6xl font-bold leading-snug tracking-tight text-gray-900 ">
               Get Stats. Increase Points.<br/>Be Eligible.
           </h1>
         <form className={"flex justify-center"} onSubmit={handleSubmit}>
-            <div className="flex justify-between gap-2 ">
-                <div className="w-full">
+            <div className="flex justify-center items-center gap-2 lg:w-3/4 md:w-3/4 sm:w-full">
+                <div className="lg:w-3/4 md:w-3/4 sm:">
                     <div className="relative">
                         <input type="text" id="address"
                                className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -64,7 +64,6 @@ function Home() {
                             Address
                         </label>
                     </div>
-                    {error && <div id="warning" className="text-red-500 p-2 font-light">{error}</div>}
 
                 </div>
                 <div className="">
@@ -76,12 +75,13 @@ function Home() {
 
 
           <button type="submit" onClick={handleSubmit}
-              className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-200 ">
+              className="relative inline-flex items-center justify-center p-0.5 mt-10 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white ">
               <span
                   className="relative px-5 py-2.5 transition-all ease-in-out duration-300 bg-black rounded-md group-hover:bg-opacity-0">
                   &nbsp; View Stats &nbsp; &rarr; &nbsp;
               </span>
           </button>
+          {error && <div id="warning" className="text-red-500 p-2 font-light">{error}</div>}
       </div>
     </main>
   )
