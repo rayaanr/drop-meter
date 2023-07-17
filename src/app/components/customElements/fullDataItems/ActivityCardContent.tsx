@@ -8,19 +8,19 @@ const ActivityCardContent = ({ activityData }: { activityData : any }) => {
             <tbody className={"leading-loose"}>
             <tr className="">
                 <td scope="row" className="px-0 py-0 font-light text-xs">Latest</td>
-                <td className="cell-style pt-0 pb-0">{getTimeAgo(activityData.lastTransactionDate)}</td>
+                <td className="px-4 py-0">{getTimeAgo(activityData.lastTransactionDate)}</td>
             </tr>
             <tr className="">
                 <td scope="row" className="px-0 py-0 font-light text-xs">Day(s)</td>
-                <td className="cell-style pt-0 pb-0">{activityData.uniqueDaysCount}</td>
+                <td className="px-4 py-0">{activityData.uniqueDaysCount}</td>
             </tr>
             <tr className="">
                 <td scope="row" className="px-0 py-0 font-light text-xs">Week(s)</td>
-                <td className="cell-style pt-0 pb-0">{activityData.uniqueWeeksCount}</td>
+                <td className="px-4 py-0">{activityData.uniqueWeeksCount}</td>
             </tr>
             <tr className="">
                 <td scope="row" className="px-0 py-0 font-light text-xs">Months(s)</td>
-                <td className="cell-style pt-0 pb-0">
+                <td className="px-4 py-0 leading-tight">
                     {activityData.uniqueMonthsCount}
                     {activityData.uniqueMonths.length > 0 && (
                         <span className={"gray-text"}>

@@ -91,11 +91,11 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                             <tbody className={"leading-loose"}>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">Total</td>
-                                <td className="px-6 py-0">${totalVolume.toFixed(2)} <span className={"gray-text"}>({(totalVolume/ethPrice).toFixed(4)} Ξ)</span></td>
+                                <td className="px-4 py-0">${totalVolume.toFixed(2)} <span className={"gray-text"}>({(totalVolume/ethPrice).toFixed(4)} Ξ)</span></td>
                             </tr>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">ETH</td>
-                                <td className="px-6 py-0">${ethVolume.toFixed(2)} <span className={"gray-text"}>({(ethVolume/ethPrice).toFixed(4)} Ξ)</span></td>
+                                <td className="px-4 py-0">${ethVolume.toFixed(2)} <span className={"gray-text"}>({(ethVolume/ethPrice).toFixed(4)} Ξ)</span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -109,11 +109,11 @@ function FullDataCard({txList, balanceList, selectedNetwork, address}: {
                             <tbody>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">In</td>
-                                <td className="px-6 py-0">${bridgeInAmount.toFixed(2)} <span className={"gray-text"}>({(bridgeInAmount/ethPrice).toFixed(4)} Ξ)</span></td>
+                                <td className="px-4 py-0">${bridgeInAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeInAmount/ethPrice).toFixed(4)} Ξ)</span></td>
                             </tr>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">Out</td>
-                                <td className="px-6 py-0">${bridgeOutAmount.toFixed(2)} <span className={"gray-text"}>({(bridgeOutAmount/ethPrice).toFixed(4)} Ξ)</span></td>
+                                <td className="px-4 py-0">${bridgeOutAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeOutAmount/ethPrice).toFixed(4)} Ξ)</span></td>
                             </tr>
                             </tbody>
                         </table>

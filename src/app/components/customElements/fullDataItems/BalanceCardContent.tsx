@@ -25,11 +25,11 @@ const BalanceCardContent = ({ balanceList }: { balanceList: Token[] }) => {
                     <tbody className={"leading-loose"}>
                     <tr className="">
                         <td scope="row" className="px-0 py-0 font-light text-xs">Total</td>
-                        <td className="px-6 py-0">${totalBalance.toFixed(2)}</td>
+                        <td className="px-6 py-0 leading-tight">${totalBalance.toFixed(2)}</td>
                     </tr>
                     <tr className="">
                         <td scope="row" className="px-0 py-0 font-light text-xs">ETH</td>
-                        <td className="px-6 py-0">{ethBalance?.toFixed(4)} Ξ</td>
+                        <td className="px-6 py-0 leading-tight">{ethBalance?.toFixed(4)} Ξ</td>
                     </tr>
                     </tbody>
                 </table>
@@ -42,10 +42,10 @@ const BalanceCardContent = ({ balanceList }: { balanceList: Token[] }) => {
                                     if (token.name) {
                                         return (
                                             <tr className="" key={index}>
-                                                <td scope="row" className="px-0 py-0">
+                                                <td scope="row" className="px-0 py-0 font-light text-xs">
                                                     {token.name.length > 20 ? `${token.name.substring(0, 20)}...` : token.name}
                                                 </td>
-                                                <td className="px-3 py-0 leading-relaxed">
+                                                <td className="px-3 py-0 leading-relaxed font-light text-xs">
                                                     {token.balance % 1 !== 0 ? token.balance.toFixed(2) : token.balance}
                                                     {token.price !== undefined && token.type==='ERC-20'
                                                         ? <span className="gray-text">(${(token.price * token.balance).toFixed(2)})</span>

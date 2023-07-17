@@ -33,7 +33,7 @@ body {
 
 @layer components {
     .cell-style {
-        @apply lg:px-6 md:px-6 sm:px-0.5 lg:py-4 md:py-4 sm:py-0.5 pt-3 pb-3 ;
+        @apply lg:px-6 md:px-6 sm:px-3 lg:py-4 md:py-4 sm:py-0.5;
     }
 
     .gray-text {
