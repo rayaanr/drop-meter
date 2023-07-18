@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from "react";
+import { TxListDataCard } from "@/app/components/resultsPageItems/TxListDataCard";
+import AnalyzedDataCard from "@/app/components/resultsPageItems/AnalyzedDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
 import evmTxList from "@/app/dataRetriever/evmTxList";
 import tokenFetch from "@/app/dataRetriever/balanceList";
@@ -13,7 +15,7 @@ interface PageProps {
 function Page({ params }: PageProps) {
     const [transactionsList, setTransactionsList] = useState<Transaction[]>([]);
     const [balanceList, setBalanceList] = useState<Token[]>([]);
-    const thisNetwork = 'scroll';
+    const thisNetwork = 'polygonZkEVM';
 
     useEffect(() => {
         const fetchTransactions = async () => {
@@ -34,7 +36,7 @@ function Page({ params }: PageProps) {
     return (
         <ResultsPage
             txList={transactionsList}
-            selectedNetwork={'scroll'}
+            selectedNetwork={'polygonZkEVM'}
             balanceList={balanceList}
             address={params.address}/>
     );

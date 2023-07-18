@@ -13,29 +13,28 @@ interface Option {
 
 interface CustomDropdownProps {
     onSelect: (value: string) => void;
+    selectedNetwork : string;
 }
 
-const Dropdown: React.FC<CustomDropdownProps> = ({onSelect}) => {
-    const options: Option[] = [
-        {
-            label: 'ZkSync',
-            value: 'zksync',
-            image: `${chainData.zksync.logo}`,
-        },
-        {
-            label: 'Scroll',
-            value: 'scroll',
-            image: `${chainData.scroll.logo}`,
-        },
-        {
-            label: 'Linea',
-            value: 'linea',
-            image: `${chainData.linea.logo}`,
-        },
-    ];
+const Dropdown: React.FC<CustomDropdownProps> = ({onSelect, selectedNetwork}) => {
+    const options: Option[] = [];
+
+    for (const key in chainData) {
+        if (Object.prototype.hasOwnProperty.call(chainData, key)) {
+            const chain = chainData[key as keyof typeof chainData]; // Type assertion
+            options.push({
+                label: chain.name,
+                value: chain.value,
+                image: chain.logo,
+            });
+        }
+    }
+
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<Option | null>(options[0]);
+    const [selectedOption, setSelectedOption] = useState<Option | null>(
+        options.find(option => option.value === selectedNetwork) || options[0]
+    );
 
     const handleOptionClick = (option: Option) => {
         setSelectedOption(option);

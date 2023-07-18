@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { AiOutlineSearch, AiFillHeart } from "react-icons/ai";
+import SelectionForm from "@/app/components/SelectionForm";
+import {AiOutlineCloseCircle} from "react-icons/ai";
 
 const TopNav = () => {
     const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -14,6 +16,10 @@ const TopNav = () => {
 
     const handleModalToggle = () => {
         setIsModalOpen(!isModalOpen);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -69,11 +75,15 @@ const TopNav = () => {
             </nav>
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
-                    <div className="h-1/2 w-1/2 bg-blue-500 relative">
+                    <div className="lg:w-1/2 md:w-3/4 sm:w-full bg-black border border-gray-500 relative pt-20 pb-20">
                         <button onClick={handleModalToggle} className="absolute top-0 right-0 m-4 text-white text-2xl">
-                            Close
+                            <AiOutlineCloseCircle/>
                         </button>
-                        <div className="p-8">Hi</div>
+                        <div className="flex justify-center items-center h-full text-center">
+                            <div className={"w-full"}>
+                                <SelectionForm closeModal={closeModal} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

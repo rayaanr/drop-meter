@@ -2,7 +2,6 @@ import {chainData} from "@/app/global/chainData";
 import {Transaction} from "@/app/global/interfaces";
 import moment from "moment";
 
-
 const evmTxList = async (selectedNetwork: keyof typeof chainData, address:string): Promise<Transaction[]> => {
     try {
         const transactionResponse = await fetch(`${chainData[selectedNetwork].txDataAPI}${address.toLowerCase()}`);
@@ -21,7 +20,7 @@ const evmTxList = async (selectedNetwork: keyof typeof chainData, address:string
                         if (token.hash === transaction.hash) {
                             return `${token.value / 10 ** token.tokenDecimal} ${token.tokenSymbol}`;
                         }}),
-                valueInUSD: 0,
+                valueInUSD: parseInt(String(((transaction.value) / 1e18)*1900)),
                 initiatorAddress: transaction.from,
                 status: transaction.isError === '0' ? 'verified' : 'failed',
                 fee: (transaction.gasPrice * transaction.gasUsed)/1e18,

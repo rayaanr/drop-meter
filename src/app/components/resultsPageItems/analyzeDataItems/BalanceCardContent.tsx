@@ -1,7 +1,10 @@
 import { Accordion, AccordionContent, AccordionHeader } from "@/app/components/customElements/Accordion";
 import { Token } from "@/app/global/interfaces";
+import React from "react";
+import {chainData} from "@/app/global/chainData";
 
-const BalanceCardContent = ({ balanceList }: { balanceList: Token[] }) => {
+
+const BalanceCardContent = ({ balanceList, selectedNetwork }: { balanceList: Token[], selectedNetwork: keyof typeof chainData }) => {
     const calculateTotalBalance = (): number => {
         let totalBalance = 0;
         for (const token of balanceList) {
@@ -22,11 +25,21 @@ const BalanceCardContent = ({ balanceList }: { balanceList: Token[] }) => {
         <Accordion>
             <AccordionHeader>
                 <table>
-                    <tbody className={"leading-loose"}>
-                    <tr className="">
-                        <td scope="row" className="px-0 py-0 font-light text-xs">Total</td>
-                        <td className="px-6 py-0 leading-tight">${totalBalance.toFixed(2)}</td>
+                    <tbody className="leading-loose">
+                    <tr>
+                        {selectedNetwork === 'zksync' ? (
+                            <>
+                                <td scope="row" className="px-0 py-0 font-light text-xs pb-2">Total</td>
+                                <td className="px-6 py-0 leading-tight pb-2">${totalBalance.toFixed(2)}</td>
+                            </>
+                        ) : (
+                            <td></td>
+                        )}
                     </tr>
+                    {/*<tr className="">*/}
+                    {/*    <td scope="row" className="px-0 py-0 font-light text-xs pb-2">Total</td>*/}
+                    {/*    <td className="px-6 py-0 leading-tight pb-2">${totalBalance.toFixed(2)}</td>*/}
+                    {/*</tr>*/}
                     <tr className="">
                         <td scope="row" className="px-0 py-0 font-light text-xs">ETH</td>
                         <td className="px-6 py-0 leading-tight">{ethBalance?.toFixed(4)} Ξ</td>
@@ -60,14 +73,7 @@ const BalanceCardContent = ({ balanceList }: { balanceList: Token[] }) => {
                                 })}
                                 </tbody>
                             </table>
-
-                            {/*<p>{token.balance % 1 !== 0 ? token.balance.toFixed(2) : token.balance}</p>*/}
-                            {/*<p>&nbsp;{token.symbol}</p>*/}
-                            {/*<p>{token.name}</p>*/}
-                            {/*<p>{token.price !== undefined ? (token.price * token.balance ).toFixed(2) : undefined}</p>*/}
-                            {/*<p className="text-gray-400 text-xs mr-1 px-1 rounded border border-gray-500">{token.type}</p>*/}
                         </>
-
             </AccordionContent>
         </Accordion>
     );

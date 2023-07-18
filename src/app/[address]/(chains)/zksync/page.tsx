@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import zksyncTxList from "@/app/dataRetriever/zkSync/zksyncTxList";
-import { TxListDataCard } from "@/app/components/TxListDataCard";
-import FullDataCard from "@/app/components/FullDataCard";
+import { TxListDataCard } from "@/app/components/resultsPageItems/TxListDataCard";
+import AnalyzedDataCard from "@/app/components/resultsPageItems/AnalyzedDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
 import zkSyncBalanceList from "@/app/dataRetriever/zkSync/zkSyncBalanceList";
 import {getZkLiteData} from "@/app/dataRetriever/zkSync/ZkLiteData";
+import {ResultsPage} from "@/app/components/ResultsPage";
 
 interface PageProps {
     params: { address: string };
@@ -38,14 +39,19 @@ export default function Page({ params }: PageProps) {
     }, [params.address]);
 
     return (
-        <div>
-            <div className={"pt-5 p-5 block m-auto lg:w-1/2 md:w-3/4 sm:w-full"}>
-                <FullDataCard txList={transactionsList} selectedNetwork={'zksync'} balanceList={balanceList} address={params.address}/>
-            </div>
-
-            <div className={"p-5"}>
-                <TxListDataCard txList={transactionsList} selectedNetwork={'zksync'} />
-            </div>
-        </div>
+        <ResultsPage
+            txList={transactionsList}
+            selectedNetwork={'zksync'}
+            balanceList={balanceList}
+            address={params.address}/>
+        // <div>
+        //     <div className={"pt-5 p-5 block m-auto lg:w-1/2 md:w-3/4 sm:w-full"}>
+        //         <AnalyzedDataCard txList={transactionsList} selectedNetwork={'zksync'} balanceList={balanceList} address={params.address}/>
+        //     </div>
+        //
+        //     <div className={"p-5"}>
+        //         <TxListDataCard txList={transactionsList} selectedNetwork={'zksync'} />
+        //     </div>
+        // </div>
     );
 }

@@ -29,45 +29,93 @@ const apiEndpoints = {
 
 
 export const chainData = {
-    eth: {
-        txDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=txlist&startblock=0&endblock=latest&sort=desc&apikey=${apiKeys.etherscanAPIKey}&address=`,
-        balanceDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=balance&address=${``}&tag=latest&apikey=${apiKeys.etherscanAPIKey}`,
-        hashLinkEndpoint : `https://etherscan.io/tx/`,
-        tokenTransferDataAPI : ``,
-        logo : './assets/chainLogos/ethereum.svg'
-    },
     zksync: {
+        name: 'ZkSync',
+        value: 'zksync',
+        type: 'main',
+        logo : '/img/zksync1.png',
         txDataAPI : ``,
         balanceDataAPI : `https://zksync2-mainnet.zkscan.io/api?module=account&action=tokenlist&address=`,
+        ethBalanceAPI : ``,
         hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
         tokenTransferDataAPI : ``,
-        logo : '/img/zksync1.png'
-    },
-    zklite: {
-        txDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}/transactions?from=latest&limit=100&direction=older`,
-        balanceDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}?stateType=finalized`,
-        hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
-        tokenTransferDataAPI : ``,
-        logo : ''
     },
     scroll: {
+        name: 'Scroll',
+        value: 'scroll',
+        type: 'test',
+        logo: '/img/scrollLogo.png',
         txDataAPI : `https://blockscout.scroll.io/api?module=account&action=txlist&startblock=0&endblock=latest&sort=desc&address=`,
         balanceDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokenlist&address=`,
+        ethBalanceAPI : `https://blockscout.scroll.io/api?module=account&action=eth_get_balance&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://blockscout.scroll.io/api?module=account&action=tokentx&address=`,
-        logo: '/img/scrollLogo.png',
-        protocols: [{
-            scrollBridgeIn : '',
-            scrollBridgeOut : '0x6d79aa2e4fbf80cf8543ad97e294861853fb0649',
-            scrollScanFaucet : '0xb8e0eBcea9418720192F0A88526854f02b1F77E6',
-            orbiterBridgeIn : '0xa08606a85bf58afb7c3d464fc6cf78a159933dd1',
-        }]
+        addresses: {
+            nativeBridge : '',
+            protocols: [{
+                scrollBridgeIn : '',
+                scrollBridgeOut : '0x6d79aa2e4fbf80cf8543ad97e294861853fb0649',
+                scrollScanFaucet : '0xb8e0eBcea9418720192F0A88526854f02b1F77E6',
+                orbiterBridgeIn : '0xa08606a85bf58afb7c3d464fc6cf78a159933dd1',
+            }]
+        }
     },
     linea: {
+        name: 'Linea',
+        value: 'linea',
+        type: 'test',
+        logo: '/img/linea1.png',
         txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
         balanceDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokenlist&address=`,
+        ethBalanceAPI : `https://explorer.goerli.linea.build/api?module=account&action=eth_get_balance&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
-        logo: '/img/linea1.png'
+
+    },
+    polygonZkEVM: {
+        name: 'Polygon ZkEVM',
+        value: 'polygonZkEVM',
+        type: 'main',
+        logo: '/img/pZkEvm.png',
+        txDataAPI: `https://explorer.mainnet.zkevm-test.net/api?module=account&action=txlist&address=`,
+        balanceDataAPI: `https://explorer.mainnet.zkevm-test.net/api?module=account&action=tokenlist&address=`,
+        ethBalanceAPI : `https://explorer.mainnet.zkevm-test.net/api?module=account&action=eth_get_balance&address=`,
+        hashLinkEndpoint: `https://explorer.mainnet.zkevm-test.net/tx/`,
+        tokenTransferDataAPI: `https://explorer.mainnet.zkevm-test.net/api?module=account&action=tokentx&address=`,
     }
+
 };
+
+
+
+
+
+
+
+
+
+
+
+// eth: {
+//     name : 'Ethereum',
+//     value : 'eth',
+//     type : 'main',
+//     logo : './assets/chainLogos/ethereum.svg',
+//     txDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=txlist&startblock=0&endblock=latest&sort=desc&apikey=${apiKeys.etherscanAPIKey}&address=`,
+//     balanceDataAPI : `${apiEndpoints.etherscanAPIEndpoint}?module=account&action=balance&address=${``}&tag=latest&apikey=${apiKeys.etherscanAPIKey}`,
+//     ethBalanceAPI : ``,
+//     hashLinkEndpoint : `https://etherscan.io/tx/`,
+//     tokenTransferDataAPI : ``,
+// },
+
+// zklite: {
+//     name: 'zkLite',
+//     value: 'zklite',
+//     type: 'main',
+//     logo : '',
+//     txDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}/transactions?from=latest&limit=100&direction=older`,
+//     balanceDataAPI : `https://api.zksync.io/api/v0.2/accounts/${``}?stateType=finalized`,
+//     ethBalanceAPI : ``,
+//     hashLinkEndpoint : `https://explorer.zksync.io/tx/`,
+//     tokenTransferDataAPI : ``,
+// },

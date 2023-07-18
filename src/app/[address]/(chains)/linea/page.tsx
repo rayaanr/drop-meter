@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import { TxListDataCard } from "@/app/components/TxListDataCard";
-import FullDataCard from "@/app/components/FullDataCard";
+import { TxListDataCard } from "@/app/components/resultsPageItems/TxListDataCard";
+import AnalyzedDataCard from "@/app/components/resultsPageItems/AnalyzedDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
 import evmTxList from "@/app/dataRetriever/evmTxList";
 import tokenFetch from "@/app/dataRetriever/balanceList";
+import {ResultsPage} from "@/app/components/ResultsPage";
 
 interface PageProps {
     params: { address: string };
@@ -33,17 +34,11 @@ function Page({ params }: PageProps) {
     }, [params.address]);
 
     return (
-        <div>
-            <div className={"pt-5"}></div>
-
-            <div className={"pt-5 w-1/2 block m-auto z-10"}>
-                <FullDataCard txList={transactionsList} selectedNetwork={thisNetwork} balanceList={balanceList} address={params.address}/>
-            </div>
-            
-            <div className={"p-5"}>
-                <TxListDataCard txList={transactionsList} selectedNetwork={thisNetwork} />
-            </div>
-        </div>
+        <ResultsPage
+            txList={transactionsList}
+            selectedNetwork={'linea'}
+            balanceList={balanceList}
+            address={params.address}/>
     );
 }
 

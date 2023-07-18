@@ -37,7 +37,7 @@ const ActivityData = ({ transactionsList }: { transactionsList: Transaction[] })
             uniqueDays.add(`${year}-${month}-${day}`);
             uniqueWeeks.add(`${year}-${week}`);
 
-            const monthYear = `${year}-${month}`;
+            const monthYear = `${year}-${month + 1}`;
             if (!months.includes(monthYear)) {
                 months.push(monthYear);
             }
