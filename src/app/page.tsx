@@ -4,7 +4,7 @@ import React from "react";
 import SelectionForm from "@/app/components/SelectionForm";
 
 function Home() {
-    
+
     return (
         <>
             <main className="flex justify-center items-center h-full text-center" style={{ height: "100dvh", width: "100dvw" }}>
