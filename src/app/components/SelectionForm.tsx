@@ -60,9 +60,8 @@ function Form({ closeModal }: { closeModal: () => void }) {
                             Address
                         </label>
                     </div>
-
                 </div>
-                <div className="">
+                <div className="z-10">
                     <Dropdown onSelect={handleNetworkSelect} selectedNetwork={selectedNetwork} />
                 </div>
             </div>
