@@ -34,9 +34,9 @@ const TopNav = () => {
                             <AiOutlineSearch className={"text-2xl"} onClick={handleModalToggle}/>
                         </button>
 
-                        <button type="button" className="text-white flex items-center gap-1 bg-gray-500 bg-opacity-50 hover:bg-gray-600 hover:bg-opacity-50 rounded text-sm px-2 py-1">
-                            <span className="hidden sm:inline-block">Support</span> <AiFillHeart className="text-lg" />
-                        </button>
+                        {/*<button type="button" className="text-white flex items-center gap-1 bg-gray-500 bg-opacity-50 hover:bg-gray-600 hover:bg-opacity-50 rounded text-sm px-2 py-1">*/}
+                        {/*    <span className="hidden sm:inline-block">Support</span> <AiFillHeart className="text-lg" />*/}
+                        {/*</button>*/}
 
 
                         <button onClick={handleNavbarToggle} type="button" aria-controls="navbar-search" aria-expanded={isNavbarOpen ? "true" : "false"}
@@ -50,7 +50,7 @@ const TopNav = () => {
                     <div className={`items-center justify-between ${isNavbarOpen ? "flex" : "hidden"} w-full md:flex md:w-auto md:order-1`} id="navbar-search">
                         <ul className="flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0">
                             <li>
-                                <a href="/" aria-current="page" className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0">
+                                <a href="/" className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
                                     Analytics
                                 </a>
                             </li>
@@ -59,23 +59,23 @@ const TopNav = () => {
                                     Sybil
                                 </a>
                             </li>
-                            <li>
-                                <a href="#" className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
-                                    Faucet
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">
-                                    Revoke
-                                </a>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <a href="#" className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">*/}
+                            {/*        Faucet*/}
+                            {/*    </a>*/}
+                            {/*</li>*/}
+                            {/*<li>*/}
+                            {/*    <a href="#" className="block py-2 pl-3 pr-4 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0">*/}
+                            {/*        Revoke*/}
+                            {/*    </a>*/}
+                            {/*</li>*/}
                         </ul>
                     </div>
                 </div>
             </nav>
             {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
-                    <div className="lg:w-1/2 md:w-3/4 sm:w-full bg-black border border-gray-500 relative pt-20 pb-20">
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
+                    <div className="lg:w-1/2 md:w-3/4 w-full m-1 bg-black border rounded border-gray-500 relative pt-20 pb-20">
                         <button onClick={handleModalToggle} className="absolute top-0 right-0 m-4 text-white text-2xl">
                             <AiOutlineCloseCircle/>
                         </button>

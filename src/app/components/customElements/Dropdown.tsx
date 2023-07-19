@@ -46,7 +46,7 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect, selectedNetwork}) =>
         <>
             <main className="relative">
                 <button onClick={() => setIsOpen(!isOpen)} type="button"
-                    className="text-white rounded text-sm lg:w-40 md:w-40 w-fit px-1 py-2 text-center flex justify-center items-center bg-black border border-gray-500 hover:border-blue-700 hover:text-blue-500">
+                    className="text-white rounded text-sm lg:w-40 md:w-40 w-fit p-2 text-center flex justify-center items-center bg-black border border-gray-500 hover:border-blue-700 hover:text-blue-500">
                     {selectedOption ? (
                         <div className={'flex items-center'}>
                             <Image src={selectedOption.image} alt={selectedOption.label} className="option-image w-7 mr-2" height={100} width={100}/>

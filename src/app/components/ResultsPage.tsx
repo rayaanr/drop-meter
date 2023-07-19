@@ -28,7 +28,7 @@ const ResultsPage = ({ txList, selectedNetwork, balanceList, address }: ResultsP
 
     return (
         <>
-            <header className={'p-5 flex justify-center'} style={{paddingTop:"90px"}}>
+            <header className={'p-5 flex lg:justify-center md:justify-center justify-start'} style={{paddingTop:"90px"}}>
                 <div className={"flex"}>
                     <Image src={chainData[selectedNet].logo} alt={chainData[selectedNet].name} className="w-[56px] mr-4" height={500} width={500}/>
                     <div>
@@ -42,7 +42,7 @@ const ResultsPage = ({ txList, selectedNetwork, balanceList, address }: ResultsP
                 </div>
             </header>
             <main>
-                <section className={"pt-5 p-5 block m-auto lg:w-1/2 md:w-3/4 sm:w-full"}>
+                <section className={"pt-5 p-1 block m-auto lg:w-1/2 md:w-3/4 w-full"}>
                     <AnalyzedDataCard txList={txList} selectedNetwork={selectedNetwork} balanceList={balanceList} address={address}/>
                 </section>
 

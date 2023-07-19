@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReactCardFlip from 'react-card-flip';
 
 async function fetchCSVData(fileUrl:string) {
     const response = await axios.get(fileUrl);
@@ -30,20 +31,20 @@ export default function YourComponent() {
         if (isValidEthereumAddress(enteredData)) {
             try {
                 setIsLoading(true);
-                const arbSybilFile = await fetchCSVData('/sybilList/HopSybilList.csv');
+                const hopSybilFile = await fetchCSVData('/sybilList/HopSybilList.csv');
                 const opSybilFile = await fetchCSVData('/sybilList/OPSybilList.csv');
 
-                const isDataInArbList = arbSybilFile.includes(enteredData.toLowerCase());
+                const isDataInHopList = hopSybilFile.includes(enteredData.toLowerCase());
                 const isDataInOpList = opSybilFile.includes(enteredData.toLowerCase());
 
-                if (isDataInArbList && isDataInOpList) {
-                    setSybilStatus('Available in both lists');
-                } else if (isDataInArbList) {
-                    setSybilStatus('Available in ARB List');
+                if (isDataInHopList && isDataInOpList) {
+                    setSybilStatus('Available in both HOP and OP sybil lists');
+                } else if (isDataInHopList) {
+                    setSybilStatus('Available in HOP sybil List');
                 } else if (isDataInOpList) {
-                    setSybilStatus('Available in OP List');
+                    setSybilStatus('Available in OP sybil List');
                 } else {
-                    setSybilStatus('Not available in both ARB and OP lists');
+                    setSybilStatus('Not available in both HOP and OP sybil lists');
                 }
             } catch (error) {
                 console.error('Error occurred while checking data:', error);
@@ -58,7 +59,7 @@ export default function YourComponent() {
 
     return (
         <main className="flex justify-center items-center" style={{ height: '100vh', width: '100vw' }}>
-            <div className="w-1/2 flex flex-col items-center">
+            <div className="lg:w-1/2 md:w-1/2 w-full flex flex-col items-center">
                 <form className="w-3/4 relative">
                     <input type="text" id="address"
                         className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-white bg-transparent rounded-lg border border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -78,7 +79,10 @@ export default function YourComponent() {
                 {addressError && <div id="warning" className="text-red-500 p-2 font-light">{addressError}</div>}
                 {isLoading
                     ? <p>Loading...</p>
-                    : sybilStatus && <p>{sybilStatus}</p>}
+                    : sybilStatus &&
+                    <p className={'h-[156px] w-3/4 flex justify-center items-center font-semibold text-2xl text-center'}>
+                        {sybilStatus}
+                    </p>}
             </div>
         </main>
     );

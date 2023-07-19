@@ -97,7 +97,7 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                                             ${totalVolume.toFixed(2)}{' '}
                                             {chainData[selectedNetwork].type === 'main' ?
                                             <span className="gray-text">
-                                                ({(totalVolume / ethPrice).toFixed(4)} Ξ)
+                                                ({(totalVolume / ethPrice).toFixed(4)}Ξ)
                                             </span>
                                                 : <span className="gray-text">($0:testnet)</span> }
                                         </td>
@@ -108,7 +108,7 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                             </tr>
                             <tr>
                                 <td scope="row" className="px-0 py-0 font-light text-xs">ETH</td>
-                                <td className="px-4 py-0 tracking-wider">{(ethVolume / ethPrice).toFixed(4)} Ξ
+                                <td className="px-4 py-0 tracking-wider">{(ethVolume / ethPrice).toFixed(4)}Ξ
                                     {chainData[selectedNetwork].type === 'main' ?
                                         <span className="gray-text">(${ethVolume.toFixed(2)})</span>
                                         : <span className="gray-text">($0:testnet)</span> }
@@ -126,11 +126,11 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                             <tbody >
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">In</td>
-                                <td className="px-4 py-0 tracking-wider">${bridgeInAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeInAmount/ethPrice).toFixed(4)} Ξ)</span></td>
+                                <td className="px-4 py-0 tracking-wider">${bridgeInAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeInAmount/ethPrice).toFixed(4)}Ξ)</span></td>
                             </tr>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">Out</td>
-                                <td className="px-4 py-0 tracking-wider">${bridgeOutAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeOutAmount/ethPrice).toFixed(4)} Ξ)</span></td>
+                                <td className="px-4 py-0 tracking-wider">${bridgeOutAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeOutAmount/ethPrice).toFixed(4)}Ξ)</span></td>
                             </tr>
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">Native</td>
