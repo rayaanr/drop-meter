@@ -16,7 +16,7 @@ interface PageProps {
 function Page({ params }: PageProps) {
     const [transactionsList, setTransactionsList] = useState<Transaction[]>([]);
     const [balanceList, setBalanceList] = useState<Token[]>([]);
-    const thisNetwork = 'linea';
+    const thisNetwork = 'lineaT';
 
     useEffect(() => {
         const fetchTransactions = async () => {

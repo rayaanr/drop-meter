@@ -60,9 +60,9 @@ export const chainData = {
             }]
         }
     },
-    linea: {
-        name: 'Linea',
-        value: 'linea',
+    lineaT: {
+        name: 'Linea Testnet',
+        value: 'lineaT',
         type: 'test',
         logo: '/img/linea1.png',
         txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
@@ -70,7 +70,17 @@ export const chainData = {
         ethBalanceAPI : `https://explorer.goerli.linea.build/api?module=account&action=eth_get_balance&address=`,
         hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
         tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
-
+    },
+    linea: {
+        name: 'Linea',
+        value: 'linea',
+        type: 'main',
+        logo: '/img/linea1.png',
+        txDataAPI : `https://api.lineascan.build/api?module=account&action=txlist&startblock=1&endblock=99999999&sort=asc&address=`,
+        balanceDataAPI : `https://api.lineascan.build/api?module=account&action=balance&tag=latest&address=`,
+        ethBalanceAPI : `https://api.lineascan.build/api?module=account&action=balance&tag=latest&address=`,
+        hashLinkEndpoint : `https://lineascan.build/tx/`,
+        tokenTransferDataAPI : `https://api.lineascan.build/api?module=account&action=tokentx&startblock=0&endblock=2500000&sort=asc&address=`,
     },
     polygonZkEVM: {
         name: 'Polygon ZkEVM',

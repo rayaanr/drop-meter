@@ -33,9 +33,9 @@ const tokenFetch = async (selectedNetwork: keyof typeof chainData, address: stri
             balance: (parseInt(ethBalance)/10 ** 18), // Assuming Ethereum has 18 decimals
             name: "Ethereum",
             symbol: "ETH",
-            contractAddress: "", // Ethereum does not have a contract address
+            contractAddress: "0x000000000000000000000000000000000000800a", // Ethereum does not have a contract address
             type: "ETH",
-            address: "", // Ethereum does not have an address
+            address: "0x000000000000000000000000000000000000800a", // Ethereum does not have an address
             decimals: 18, // Assuming Ethereum has 18 decimals
             price: undefined,
         };

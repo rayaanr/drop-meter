@@ -25,6 +25,7 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
     const [bridgeOutAmount, setBridgeOutAmount] = useState(0);
     const ethPrice = useEthPrice();
     const [zkLiteTxCount, setZkLiteTxCount] = useState<number>(0);
+    const [lineaTestnetTxCount, setLineaTestnetTxCount] = useState<number>(0);
 
     const handleZkLiteTxCountChange = (count: number) => {
         setZkLiteTxCount(count);
@@ -124,14 +125,19 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                     <td className="cell-style">
                         <table className={"leading-loose"}>
                             <tbody >
-                            <tr className="">
-                                <td scope="row" className="px-0 py-0 font-light text-xs">In</td>
-                                <td className="px-4 py-0 tracking-wider">${bridgeInAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeInAmount/ethPrice).toFixed(4)}Ξ)</span></td>
-                            </tr>
-                            <tr className="">
-                                <td scope="row" className="px-0 py-0 font-light text-xs">Out</td>
-                                <td className="px-4 py-0 tracking-wider">${bridgeOutAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeOutAmount/ethPrice).toFixed(4)}Ξ)</span></td>
-                            </tr>
+                            {selectedNetwork === 'zksync' ? (
+                                <>
+                                    <tr className="">
+                                        <td scope="row" className="px-0 py-0 font-light text-xs">In</td>
+                                        <td className="px-4 py-0 tracking-wider">${bridgeInAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeInAmount/ethPrice).toFixed(4)}Ξ)</span></td>
+                                    </tr>
+                                    <tr className="">
+                                        <td scope="row" className="px-0 py-0 font-light text-xs">Out</td>
+                                        <td className="px-4 py-0 tracking-wider">${bridgeOutAmount.toFixed(2)}<span className={"gray-text"}>({(bridgeOutAmount/ethPrice).toFixed(4)}Ξ)</span></td>
+                                    </tr>
+                                </> )
+                                : null
+                            }
                             <tr className="">
                                 <td scope="row" className="px-0 py-0 font-light text-xs">Native</td>
                                 <td className="px-4 py-0 tracking-wider"><span className={"gray-text"}></span></td>
@@ -163,9 +169,8 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                             progress={
                                 balanceList.reduce((progress, token) => {
                                     if (
-                                        (token.contractAddress === "0x000000000000000000000000000000000000800a" || '0x0000000000000000000000000000000000000000' ||
-                                            token.contractAddress === "0x000000000000000000000000000000000000800a".toUpperCase()) &&
-                                        token.price !== undefined
+                                        (token.contractAddress === "0x000000000000000000000000000000000000800a" || token.contractAddress === '0x0000000000000000000000000000000000000000' ||
+                                            token.contractAddress === "0x000000000000000000000000000000000000800a".toUpperCase() || token.symbol === 'ETH')
                                     ) {
                                         return progress + Math.floor(token.balance * ethPrice);
                                     }
@@ -177,17 +182,25 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                     </td>
                     <td className="cell-style"><BalanceCardContent balanceList={balanceList} selectedNetwork={selectedNetwork}/></td>
                 </tr>
-                <tr className="border-b border-gray-500">
-                    <th scope="row" className="cell-style">Protocols</th>
-                    <td className="px-6 py-4"></td>
-                    <td className="cell-style">#</td>
-                </tr>
+                {/*<tr className="border-b border-gray-500">*/}
+                {/*    <th scope="row" className="cell-style">Protocols</th>*/}
+                {/*    <td className="px-6 py-4"></td>*/}
+                {/*    <td className="cell-style">#</td>*/}
+                {/*</tr>*/}
                 {selectedNetwork === 'zksync' && (
 
                     <tr className="border-b border-gray-500">
-                        <th scope="row" className="cell-style">zkLite</th>
+                        <th scope="row" className="cell-style">ZkSync Lite</th>
                         <td className="px-2 py-2 "><ProgressBar progress={zkLiteTxCount} type={"ZkLite"}/></td>
                         <td className="cell-style"><ZkLiteActivityCard address={address} onZkLiteTxCountChange={handleZkLiteTxCountChange}/></td>
+                    </tr>
+                )}
+                {selectedNetwork === 'linea' && (
+
+                    <tr className="border-b border-gray-500">
+                        <th scope="row" className="cell-style">Linea Testnet</th>
+                        <td className="px-2 py-2 "></td>
+                        <td className="cell-style"></td>
                     </tr>
                 )}
                 </tbody>
