@@ -8,6 +8,7 @@ import {TxListDataCard} from "@/app/components/resultsPageItems/TxListDataCard";
 import {Dropdown} from "@/app/components/customElements/Dropdown";
 import {useRouter} from "next/navigation";
 import Image from "next/image";
+import LineaT from "@/app/components/lineaTnet";
 
 interface ResultsPageProps {
     txList : Transaction[],
@@ -45,6 +46,15 @@ const ResultsPage = ({ txList, selectedNetwork, balanceList, address }: ResultsP
                 <section className={"pt-5 p-1 block m-auto lg:w-1/2 md:w-3/4 w-full"}>
                     <AnalyzedDataCard txList={txList} selectedNetwork={selectedNetwork} balanceList={balanceList} address={address}/>
                 </section>
+
+                {selectedNetwork === 'linea' ? (
+                    <>
+                        <section className={"pt-5 p-1 block m-auto lg:w-1/2 md:w-3/4 w-full border border-gray-500 mt-24"}>
+                            <h1 className={'flex w-100 justify-center font-bold m-2 text-2xl'}>Linea Testnet</h1>
+                            <LineaT params={{address: address}} />
+                        </section>
+                    </>
+                ): null}
 
                 <section className={"p-5"}>
                     <TxListDataCard txList={txList} selectedNetwork={selectedNetwork} />

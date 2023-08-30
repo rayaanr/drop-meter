@@ -1,19 +1,16 @@
-'use client'
-
 import { useEffect, useState } from "react";
-import { TxListDataCard } from "@/app/components/resultsPageItems/TxListDataCard";
-import AnalyzedDataCard from "@/app/components/resultsPageItems/AnalyzedDataCard";
 import {Token, Transaction} from "@/app/global/interfaces";
 import evmTxList from "@/app/dataRetriever/evmTxList";
 import tokenFetch from "@/app/dataRetriever/balanceList";
 import {ResultsPage} from "@/app/components/ResultsPage";
-import {chainData} from "@/app/global/chainData";
+import {Anaheim} from "next/dist/compiled/@next/font/dist/google";
+import AnalyzedDataCard from "@/app/components/resultsPageItems/AnalyzedDataCard";
 
 interface PageProps {
     params: { address: string };
 }
 
-function Page({ params }: PageProps) {
+function LineaT({ params }: PageProps) {
     const [transactionsList, setTransactionsList] = useState<Transaction[]>([]);
     const [balanceList, setBalanceList] = useState<Token[]>([]);
     const thisNetwork = 'lineaT';
@@ -35,12 +32,10 @@ function Page({ params }: PageProps) {
     }, [params.address]);
 
     return (
-        <ResultsPage
-            txList={transactionsList}
-            selectedNetwork={thisNetwork}
-            balanceList={balanceList}
-            address={params.address}/>
+        <>
+            <AnalyzedDataCard txList={transactionsList} balanceList={balanceList} selectedNetwork={'lineaT'} address={params.address} />
+        </>
     );
 }
 
-export default Page;
+export default LineaT;

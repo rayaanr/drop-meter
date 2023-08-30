@@ -40,14 +40,15 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
         let bridgeOutAmount = 0;
 
         for (const transaction of txList) {
-            if (transaction.status === "verified" && transaction.method !== "in") {
+            if (transaction.status !== "failed") {
                 count += 1;
                 fees += transaction.fee;
-            }
-
-            if (transaction.status === "verified") {
                 volume += transaction.valueInUSD;
             }
+
+            // if (transaction.status === "verified") {
+            //
+            // }
 
             if (transaction.value.includes("ETH")) {
                 ethVolume += transaction.valueInUSD;
@@ -119,6 +120,8 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                         </table>
                     </td>
                 </tr>
+                {selectedNetwork === 'zksync' ? (
+                    <>
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="cell-style">Bridge</th>
                     <td className="px-2 py-2"><ProgressBar progress={bridgeInAmount} type={"Bridge"}/></td>
@@ -138,14 +141,19 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                                 </> )
                                 : null
                             }
-                            <tr className="">
-                                <td scope="row" className="px-0 py-0 font-light text-xs">Native</td>
-                                <td className="px-4 py-0 tracking-wider"><span className={"gray-text"}></span></td>
-                            </tr>
+                            {/*<tr className="">*/}
+                            {/*    <td scope="row" className="px-0 py-0 font-light text-xs">Native</td>*/}
+                            {/*    <td className="px-4 py-0 tracking-wider"><span className={"gray-text"}></span></td>*/}
+                            {/*</tr>*/}
                             </tbody>
                         </table>
                     </td>
                 </tr>
+                    </>
+                )
+                    : null
+                }
+
                 <tr className="border-b border-gray-500">
                     <th scope="row" className="cell-style">Fee</th>
                     <td className="px-6 py-4"></td>
@@ -195,14 +203,13 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                         <td className="cell-style"><ZkLiteActivityCard address={address} onZkLiteTxCountChange={handleZkLiteTxCountChange}/></td>
                     </tr>
                 )}
-                {selectedNetwork === 'linea' && (
-
-                    <tr className="border-b border-gray-500">
-                        <th scope="row" className="cell-style">Linea Testnet</th>
-                        <td className="px-2 py-2 "></td>
-                        <td className="cell-style"></td>
-                    </tr>
-                )}
+                {/*{selectedNetwork === 'linea' && (*/}
+                {/*    <tr className="border-b border-gray-500">*/}
+                {/*        <th scope="row" className="cell-style">Linea Testnet</th>*/}
+                {/*        <td className="px-2 py-2 "></td>*/}
+                {/*        <td className="cell-style"></td>*/}
+                {/*    </tr>*/}
+                {/*)}*/}
                 </tbody>
             </table>
         </div>

@@ -56,7 +56,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
         }
     }
 
-
     if (progress === 0) {
         colorClass = 'border-red-500';
     } else if (progress >= 0 && progress <= 25) {
@@ -88,7 +87,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ progress , type}) => {
                     switch (type) {
                         case "Interactions":
                             return (
-                                <p>Number of verified tx excluding deposits<br/>
+                                <p>Number of verified transactions<br/>
                                     1P - Conducted more than 4 transactions <br/>
                                     2P - Conducted more than 10 transactions<br/>
                                     3P - Conducted more than 25 transactions<br/>

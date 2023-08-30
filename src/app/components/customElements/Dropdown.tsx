@@ -21,14 +21,17 @@ const Dropdown: React.FC<CustomDropdownProps> = ({onSelect, selectedNetwork}) =>
 
     for (const key in chainData) {
         if (Object.prototype.hasOwnProperty.call(chainData, key)) {
-            const chain = chainData[key as keyof typeof chainData]; // Type assertion
-            options.push({
-                label: chain.name,
-                value: chain.value,
-                image: chain.logo,
-            });
+            if (key !== 'lineaT') {
+                const chain = chainData[key as keyof typeof chainData]; // Type assertion
+                options.push({
+                    label: chain.name,
+                    value: chain.value,
+                    image: chain.logo,
+                });
+            }
         }
     }
+
 
 
     const [isOpen, setIsOpen] = useState(false);
