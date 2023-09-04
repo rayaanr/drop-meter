@@ -1,18 +1,20 @@
 'use client'
 
-import React from "react";
+import Image from "next/image";
 import SelectionForm from "@/app/components/SelectionForm";
+import React from "react";
 
 function Home() {
 
     return (
         <>
-            <main className="flex justify-center items-center h-full text-center" style={{ height: "100dvh", width: "100dvw" }}>
-                <div className="lg:w-9/12 md:w-3/4 sm:w-full pt-10">
-                    <h1 className="title mb-14 pb-2.5 lg:text-6xl md:text-6xl text-4xl font-bold leading-snug tracking-tight text-gray-900">
-                        Get Stats. Increase Points.<br />Be Eligible.
+            <main className='flex justify-center items-center'>
+                <div className='w-3/4 flex flex-col justify-center items-center text-center'>
+                    <Image src='logo.svg' alt='DropMeter' width={400} height={400} className={'mt-12 mb-4'} />
+                    <h1 className={'text-5xl title'}>
+                        Get Stats. Increase Points. Be Eligible.
                     </h1>
-                    <SelectionForm closeModal={() => {}}/>
+                    <SelectionForm />
                 </div>
             </main>
         </>
