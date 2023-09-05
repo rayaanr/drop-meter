@@ -7,7 +7,7 @@ import React from "react";
 export function Providers({children}: { children: React.ReactNode }) {
     return (
         <NextUIProvider>
-            <main className="dark text-foreground bg-background" style={{minHeight:'100vh'}}>
+            <main className="dark text-foreground " style={{minHeight:'100vh'}}>
                 <TopNav />
                 {children}
             </main>

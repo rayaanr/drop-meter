@@ -52,7 +52,7 @@ function SelectionForm() {
     return (
         <>
             <main className={'m-5 hello'}>
-            <Card>
+            <Card isBlurred className={'border-none bg-background/60 dark:bg-default-100/50 '}>
                 <CardBody className={'flex gap-4 text-center'}>
                     <Input
                         type="text"
