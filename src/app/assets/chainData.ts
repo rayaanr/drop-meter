@@ -13,7 +13,13 @@ type ChainItemData = {
     hashLinkEndpoint: string;
     tokenTransferDataAPI: string;
     addresses: any;
-    lite?: any;
+    lite: {
+        name: string,
+        value: string,
+        type: 'main' | 'test'
+        logo : any,
+        api?: any
+    }
 };
 
 export const chainData: ChainItem = {
@@ -32,6 +38,7 @@ export const chainData: ChainItem = {
             name: 'ZkSync Lite',
             value: 'zksyncT',
             type: 'main',
+            logo : '/img/zklite.svg',
         }
     },
     scroll: {
@@ -54,7 +61,10 @@ export const chainData: ChainItem = {
             }]
         },
         lite: {
-            name: 'Scroll Lite',
+            name: '',
+            value: '',
+            type: 'test',
+            logo : '',
         }
     },
     linea: {
@@ -73,12 +83,14 @@ export const chainData: ChainItem = {
             value: 'lineaT',
             type: 'test',
             logo: '/img/linea1.svg',
-            txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
-            balanceDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokenlist&address=`,
-            ethBalanceAPI : `https://explorer.goerli.linea.build/api?module=account&action=eth_get_balance&address=`,
-            hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
-            tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
-            addresses: '',
+            api : {
+                txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
+                balanceDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokenlist&address=`,
+                ethBalanceAPI : `https://explorer.goerli.linea.build/api?module=account&action=eth_get_balance&address=`,
+                hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
+                tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
+                addresses: '',
+            }
         }
     },
     polygonZkEVM: {
@@ -92,6 +104,11 @@ export const chainData: ChainItem = {
         hashLinkEndpoint: `https://explorer.mainnet.zkevm-test.net/tx/`,
         tokenTransferDataAPI: `https://explorer.mainnet.zkevm-test.net/api?module=account&action=tokentx&address=`,
         addresses: '',
-        lite: null,
+        lite: {
+            name: '',
+            value: '',
+            type: 'test',
+            logo : '',
+        }
     }
 };

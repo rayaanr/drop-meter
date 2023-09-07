@@ -1,10 +1,10 @@
 'use client'
 
-import {Token, Transaction} from "@/app/assets/interfaces";
+import {ChainLiteData, Token, Transaction} from "@/app/assets/interfaces";
 import React, {useState} from "react";
 import {chainData} from "@/app/assets/chainData";
-import AnalyzedDataCard from "@/app/components/resultsPageItems/AnalyzedDataCard";
-import {TxListDataCard} from "@/app/components/resultsPageItems/TxListDataCard";
+import AnalyzedDataCard from "@/app/components/resultsPageItems/analyzedDataCard";
+import {TxListDataCard} from "@/app/components/resultsPageItems/txListDataCard";
 // import {Dropdown} from "@/app/components/customElements/Dropdown";
 import {useRouter} from "next/navigation";
 import Image from "next/image";
@@ -16,10 +16,11 @@ interface ResultsPageProps {
     selectedNetwork: keyof typeof chainData,
     balanceList: Token[],
     address: string,
+    liteData?: ChainLiteData,
 }
 
 
-const ResultsPage = ({ txList, selectedNetwork, balanceList, address }: ResultsPageProps) => {
+const ResultsPage = ({ txList, selectedNetwork, balanceList, address, liteData }: ResultsPageProps) => {
     const router = useRouter();
     const [selectedNet, setSelectedNet] = useState(selectedNetwork);
 
@@ -54,8 +55,8 @@ const ResultsPage = ({ txList, selectedNetwork, balanceList, address }: ResultsP
             {/*    /!*</div>*!/*/}
             {/*</header>*/}
             <main>
-                <section className={""}>
-                    <AnalyzedDataCard txList={txList} selectedNetwork={selectedNetwork} balanceList={balanceList} address={address}/>
+                <section className={"pl-20 pr-20"}>
+                    <AnalyzedDataCard txList={txList} selectedNetwork={selectedNetwork} balanceList={balanceList} address={address} liteData={liteData}/>
                 </section>
 
                 {/*{selectedNetwork === 'linea' ? (*/}

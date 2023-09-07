@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import SelectionForm from "@/app/components/SelectionForm";
+import SelectionForm from "@/app/components/selectionForm";
 import React from "react";
 
 function Home() {

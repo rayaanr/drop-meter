@@ -1,7 +1,7 @@
 'use client'
 
 import {NextUIProvider} from '@nextui-org/react';
-import TopNav from './components/TopNav';
+import TopNav from './components/topNav';
 import React from "react";
 
 export function Providers({children}: { children: React.ReactNode }) {

@@ -42,8 +42,8 @@ const BalanceCardContent = ({ balanceList, selectedNetwork }: { balanceList: Tok
                     <Divider/>
                     <Table aria-label="Balance Table" removeWrapper hideHeader
                            classNames={{
-                               base: "max-h-[100px] overflow-scroll",
-                               table: "min-h-[100px]",
+                               base: "max-h-[140px] overflow-scroll",
+                               table: "min-h-[140px]",
                            }}>
                         <TableHeader>
                             <TableColumn>NAME</TableColumn>

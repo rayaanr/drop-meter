@@ -13,7 +13,7 @@ export interface Transfer {
     transactionHash: string;
     amount: number;
     token: Token;
-    type: string;
+    type: 'main' | 'test';
     fields: {
         tokenId: string;
     };
@@ -32,4 +32,15 @@ export interface Transaction {
     type: string | undefined;
     to: string;
     contractAddress: string;
+}
+
+export interface ChainLiteData {
+    type: 'main' | 'test' ;
+    interactions: number;
+    balances: Token[];
+    fees: number;
+    activity: {
+        latestActivity?: string;
+        activatedOn?: string;
+    }
 }

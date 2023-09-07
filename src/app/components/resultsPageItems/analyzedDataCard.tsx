@@ -1,11 +1,11 @@
-import {Token, Transaction} from "@/app/assets/interfaces";
+import {ChainLiteData, Token, Transaction} from "@/app/assets/interfaces";
 import {chainData} from "@/app/assets/chainData";
 import React, {useEffect, useState} from "react";
 import ActivityData from "@/app/utils/activityData";
 // import 'react-circular-progressbar/dist/styles.css';
 // import ProgressBar from "@/app/components/customElements/ProgressBar";
 import useEthPrice from "@/app/utils/ethPrice";
-import {BalanceCardContent} from "@/app/components/resultsPageItems/BalanceCardContent";
+import {BalanceCardContent} from "@/app/components/resultsPageItems/balanceCardContent";
 // import ZkLiteActivityCard from "@/app/dataRetriever/zkSync/ZkLiteActivityCard";
 import { motion } from "framer-motion"
 import {Card, CardHeader, CardBody, CardFooter, Divider, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
@@ -13,13 +13,15 @@ import {BsArrowRightShort} from 'react-icons/bs'
 import getTimeAgo from "@/app/utils/timeAgo";
 import formatMonths from "@/app/utils/formatMonths";
 import moment from "moment";
-import {TxListDataCard} from "@/app/components/resultsPageItems/TxListDataCard";
+import {TxListDataCard} from "@/app/components/resultsPageItems/txListDataCard";
+import LiteDataCard from "@/app/components/resultsPageItems/liteDataCard";
 
-function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
+function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteData}: {
     txList: Transaction[],
     balanceList: Token[],
     selectedNetwork: keyof typeof chainData,
     address: string,
+    liteData?: ChainLiteData,
 }) {
     const [interactionCount, setInteractionCount] = useState(0);
     const [totalVolume, setTotalVolume] = useState(0);
@@ -101,9 +103,9 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                         {selectedNetwork === 'zksync' ? (
                                 <p className={'flex items-center text-xs mt-5'}>ETH <BsArrowRightShort/>
                                     {chainData[selectedNetwork].type === 'main' ?
-                                        <p>${ethVolume.toFixed(2)}
+                                        <span>${ethVolume.toFixed(2)}
                                             <span> ({(ethVolume / ethPrice).toFixed(4)} Ξ)</span>
-                                        </p>
+                                        </span>
                                         : `($0:testnet)`}
                                 </p>
                             ) : null
@@ -118,9 +120,9 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                                 </h3>
                                 <p className={'flex items-center text-xs mt-5'}>out <BsArrowRightShort/>
                                     {chainData[selectedNetwork].type === 'main' ?
-                                        <p>${bridgeOutAmount.toFixed(2)}
+                                        <span>${bridgeOutAmount.toFixed(2)}
                                             <span> ({(bridgeOutAmount/ethPrice).toFixed(4)}Ξ)</span>
-                                        </p>
+                                        </span>
                                         : `($0:testnet)`}
                                 </p>
                     </CardBody>
@@ -150,19 +152,19 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                     </TableHeader>
                     <TableBody>
                         <TableRow key="1">
-                            <TableCell>Last Activity</TableCell>
+                            <TableCell>Latest Activity</TableCell>
                             <TableCell>{getTimeAgo(activityData.lastTransactionDate)}</TableCell>
                         </TableRow>
                         <TableRow key="2">
-                            <TableCell>Active Day(s)</TableCell>
+                            <TableCell>Unique Active Day(s)</TableCell>
                             <TableCell>{activityData.uniqueDaysCount}</TableCell>
                         </TableRow>
                         <TableRow key="3">
-                            <TableCell>Active Week(s)</TableCell>
+                            <TableCell>Unique Active Week(s)</TableCell>
                             <TableCell>{activityData.uniqueWeeksCount}</TableCell>
                         </TableRow>
                         <TableRow key="4">
-                            <TableCell>Active Months(s)</TableCell>
+                            <TableCell>Unique Active Months(s)</TableCell>
                             <TableCell>
                                 <p>{activityData.uniqueMonthsCount}
                                     {activityData.uniqueMonths.length > 0 && (
@@ -173,8 +175,17 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address}: {
                                 </p>
                             </TableCell>
                         </TableRow>
+                        <TableRow key="5">
+                            <TableCell>First Transaction</TableCell>
+                            <TableCell>{getTimeAgo(activityData.firstTransactionDate)}
+                                <span className={"text-xs text-gray-400"}> ({activityData.firstTransactionDate?.toLocaleDateString()})</span>
+                            </TableCell>
+                        </TableRow>
                     </TableBody>
                 </Table>
+            </section>
+            <section className={'mt-8'}>
+                <LiteDataCard selectedNetwork={selectedNetwork} liteData={liteData}/>
             </section>
             <section className={'mt-8'}>
                 <TxListDataCard txList={txList} selectedNetwork={selectedNetwork} />

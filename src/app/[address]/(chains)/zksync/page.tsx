@@ -6,6 +6,7 @@ import {Token, Transaction} from "@/app/assets/interfaces";
 import zkSyncBalancesFetch from "@/app/dataRetrieve/zksync/zkSyncBalancesFetch";
 // import {getZkLiteData} from "@/app/dataRetriever/zkSync/ZkLiteData";
 import {ResultsPage} from "@/app/[address]/resultsPage";
+import zkSyncLiteData from "@/app/dataRetrieve/zksync/zkSyncLiteData";
 
 interface PageProps {
     params: { address: string };
@@ -15,6 +16,7 @@ export default function Page({ params }: PageProps) {
     const [transactionsList, setTransactionsList] = useState<Transaction[]>([]);
     const [balanceList, setBalanceList] = useState<Token[]>([]);
     const [zkLiteData, setZkLiteData] = useState<any>({});
+    let thisNetwork = 'zksync';
 
     useEffect(() => {
         const fetchTransactions = async () => {
@@ -24,6 +26,10 @@ export default function Page({ params }: PageProps) {
 
                 const retrievedBalance = await zkSyncBalancesFetch(params.address);
                 setBalanceList(retrievedBalance);
+
+                const retrievedZkLiteData = await zkSyncLiteData(thisNetwork, params.address);
+                setZkLiteData(retrievedZkLiteData);
+                console.log('Hi');
 
                 // const retrievedZkLiteData = await getZkLiteData(params.address);
                 // setZkLiteData(retrievedZkLiteData);
@@ -41,6 +47,8 @@ export default function Page({ params }: PageProps) {
             txList={transactionsList}
             selectedNetwork={'zksync'}
             balanceList={balanceList}
-            address={params.address}/>
+            address={params.address}
+            liteData={zkLiteData}
+        />
     );
 }
