@@ -15,6 +15,8 @@ import formatMonths from "@/app/utils/formatMonths";
 import moment from "moment";
 import {TxListDataCard} from "@/app/components/resultsPageItems/txListDataCard";
 import LiteDataCard from "@/app/components/resultsPageItems/liteDataCard";
+import getProtocol from "@/app/components/resultsPageItems/protocolsCard";
+import ProtocolsCard from "@/app/components/resultsPageItems/protocolsCard";
 
 function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteData}: {
     txList: Transaction[],
@@ -31,12 +33,16 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
     const [bridgeInAmount, setBridgeInAmount] = useState(0);
     const [bridgeOutAmount, setBridgeOutAmount] = useState(0);
     const ethPrice = useEthPrice();
+
     const [zkLiteTxCount, setZkLiteTxCount] = useState<number>(0);
     const [lineaTestnetTxCount, setLineaTestnetTxCount] = useState<number>(0);
 
     const handleZkLiteTxCountChange = (count: number) => {
         setZkLiteTxCount(count);
     };
+
+    // const protocolList = ProtocolsCard({ transactionsList: txList});
+    // console.log(protocolList);
 
     useEffect(() => {
         let count = 0;
@@ -76,6 +82,9 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
         setBridgeInAmount(bridgeInAmount);
         setBridgeOutAmount(bridgeOutAmount);
     }, [txList]);
+
+
+
 
 
     return (
@@ -184,9 +193,15 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
                     </TableBody>
                 </Table>
             </section>
+
             <section className={'mt-8'}>
                 <LiteDataCard selectedNetwork={selectedNetwork} liteData={liteData}/>
             </section>
+            
+            <section className={'mt-8'}>
+                <ProtocolsCard transactionsList={txList} />
+            </section>
+
             <section className={'mt-8'}>
                 <TxListDataCard txList={txList} selectedNetwork={selectedNetwork} />
             </section>

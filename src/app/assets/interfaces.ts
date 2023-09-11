@@ -44,3 +44,11 @@ export interface ChainLiteData {
         activatedOn?: string;
     }
 }
+
+export interface ProtocolsData {
+    name: string;
+    id: string;
+    logo: string;
+    url: string;
+    addresses: string[];
+}
