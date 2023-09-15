@@ -29,7 +29,6 @@ export default function Page({ params }: PageProps) {
 
                 const retrievedZkLiteData = await zkSyncLiteData(thisNetwork, params.address);
                 setZkLiteData(retrievedZkLiteData);
-                console.log('Hi');
 
                 // const retrievedZkLiteData = await getZkLiteData(params.address);
                 // setZkLiteData(retrievedZkLiteData);

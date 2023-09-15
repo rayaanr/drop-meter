@@ -41,7 +41,7 @@ const protocolsCard = ({ transactionsList }: { transactionsList: Transaction[] }
         protocol.latestActivity = timeAgo(activityData.lastTransactionDate) || ''; // Use the lastTransactionDate, or an empty string if it's null
     });
 
-    console.log(protocols);
+    // console.log(protocols);
     return (
         <>
             <Table aria-label="Protocols">

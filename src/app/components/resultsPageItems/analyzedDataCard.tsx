@@ -198,9 +198,9 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
                 <LiteDataCard selectedNetwork={selectedNetwork} liteData={liteData}/>
             </section>
             
-            <section className={'mt-8'}>
-                <ProtocolsCard transactionsList={txList} />
-            </section>
+            {/*<section className={'mt-8'}>*/}
+            {/*    <ProtocolsCard transactionsList={txList} />*/}
+            {/*</section>*/}
 
             <section className={'mt-8'}>
                 <TxListDataCard txList={txList} selectedNetwork={selectedNetwork} />

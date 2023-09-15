@@ -60,8 +60,6 @@ const ZkSyncLiteData = async (selectedNetwork: string, address: string): Promise
             },
         };
 
-        console.log('yow ', liteData);
-
         return liteData;
     } catch (error) {
         console.error('Error fetching data:', error);
