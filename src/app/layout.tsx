@@ -7,8 +7,7 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Drop Meter',
-  description: 'Get Stats. Increase Points. Be Eligible.',
+  title: 'DropMeter',
 }
 
 export default function RootLayout({
@@ -18,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+    <head>
+        <link rel='icon' href='/favicon.svg'/>
+    </head>
       <body className={inter.className}>
       <Providers>
           {children}

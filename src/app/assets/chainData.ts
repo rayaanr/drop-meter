@@ -8,6 +8,7 @@ type ChainItemData = {
     type: string;
     logo: string;
     txDataAPI: string;
+    internalTxDataAPI?: string;
     balanceDataAPI: string;
     ethBalanceAPI: string;
     hashLinkEndpoint: string;
@@ -73,6 +74,7 @@ export const chainData: ChainItem = {
         type: 'main',
         logo: '/img/linea1.svg',
         txDataAPI : `https://api.lineascan.build/api?module=account&action=txlist&startblock=1&endblock=99999999&sort=asc&address=`,
+        internalTxDataAPI : `https://api.lineascan.build/api?module=account&action=txlistinternal&startblock=1&endblock=99999999&sort=asc&address=`,
         balanceDataAPI : `https://api.lineascan.build/api?module=account&action=balance&tag=latest&address=`,
         ethBalanceAPI : `https://api.lineascan.build/api?module=account&action=balance&tag=latest&address=`,
         hashLinkEndpoint : `https://lineascan.build/tx/`,

@@ -10,9 +10,9 @@ export default function MainNav() {
 
     const menuItems = [
         {title: `Home`, href: "/"},
-        {title: "About", href: "#about"},
-        {title: "Projects", href: "#projects"},
-        {title: "Contact", href: "#contact"},
+        {title: "Sybil", href: "#about"},
+        {title: "About", href: "#projects"},
+        // {title: "Contact", href: "#contact"},
     ];
 
     const openCV = () => {
@@ -36,7 +36,7 @@ export default function MainNav() {
                 {/*>*/}
                     <NavbarBrand className='hidden sm:flex'>
                         <Link href={'/'}>
-                            <img src="/logo.svg" alt="Logo" className="w-10 h-10 ml-5"/>
+                            <img src="/flogo.png" alt="Logo" className="w-40 h-auto ml-5"/>
                         </Link>
                     </NavbarBrand>
                 {/*</motion.div>*/}
@@ -45,7 +45,7 @@ export default function MainNav() {
             <NavbarContent justify='center' className='sm:hidden pr-3'>
                 <NavbarBrand>
                     <Link href={'/'}>
-                        <img src="/logo.svg" alt="Logo" className="w-10 h-10"/>
+                        <img src="/flogo.png" alt="Logo" className="w-40 h-auto"/>
                     </Link>
                 </NavbarBrand>
             </NavbarContent>
@@ -122,7 +122,7 @@ export default function MainNav() {
                 {/*>*/}
                     <NavbarItem>
                         <Button as={Link} color="primary" href="#" variant="bordered" radius='sm' onClick={openCV}>
-                            Resume
+                            Support
                         </Button>
                     </NavbarItem>
                 {/*</motion.div>*/}

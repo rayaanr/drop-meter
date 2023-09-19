@@ -7,6 +7,11 @@ const evmTxList = async (selectedNetwork: keyof typeof chainData, address:string
         const transactionResponse = await fetch(`${chainData[selectedNetwork].txDataAPI}${address.toLowerCase()}`);
         const transactionResult = await transactionResponse.json();
 
+        // const internalTxResponse = chainData[selectedNetwork].internalTxDataAPI && await fetch(`${chainData[selectedNetwork].internalTxDataAPI}${address.toLowerCase()}`);
+        // if (internalTxResponse && "json" in internalTxResponse) {
+        //     const internalTxResult = await internalTxResponse?.json();
+        // }
+
         const tokenTransferResponse = await fetch(`${chainData[selectedNetwork].tokenTransferDataAPI}${address.toLowerCase()}`);
         const tokenTransferResult = await tokenTransferResponse.json();
 
