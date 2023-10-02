@@ -2,6 +2,7 @@
 
 import React from "react";
 import {Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle} from "@nextui-org/react";
+import {BsFillHeartFill, BsGithub} from "react-icons/bs";
 // import {motion} from "framer-motion";
 // import AnimatedIconList from "./AnimatedIconList.tsx";
 
@@ -77,7 +78,7 @@ export default function MainNav() {
                 {/*>*/}
                     <NavbarItem className="hidden sm:flex">
                         <Link color="foreground" href="#about">
-                            About
+                            Sybil
                         </Link>
                     </NavbarItem>
                 {/*</motion.div>*/}
@@ -92,7 +93,7 @@ export default function MainNav() {
                 {/*>*/}
                     <NavbarItem className="hidden sm:flex">
                         <Link color="foreground" href="#projects">
-                            Projects
+                            About
                         </Link>
                     </NavbarItem>
                 {/*</motion.div>*/}
@@ -106,8 +107,8 @@ export default function MainNav() {
                 {/*    }} // Delayed animation for the paragraph*/}
                 {/*>*/}
                     <NavbarItem className="hidden sm:flex">
-                        <Link color="foreground" href="#contact">
-                            Contact
+                        <Link color="foreground" href="#">
+                            <BsGithub />
                         </Link>
                     </NavbarItem>
                 {/*</motion.div>*/}
@@ -121,8 +122,8 @@ export default function MainNav() {
                 {/*    }} // Delayed animation for the paragraph*/}
                 {/*>*/}
                     <NavbarItem>
-                        <Button as={Link} color="primary" href="#" variant="bordered" radius='sm' onClick={openCV}>
-                            Support
+                        <Button as={Link} color="default" href="#" size="sm" radius='sm' onClick={openCV}>
+                            <BsFillHeartFill className={'text-red-600 text-lg'} /> Support
                         </Button>
                     </NavbarItem>
                 {/*</motion.div>*/}

@@ -43,7 +43,7 @@ export const chainData: ChainItem = {
         }
     },
     scroll: {
-        name: 'Scroll',
+        name: 'Scroll (Alpha)',
         value: 'scroll',
         type: 'test',
         logo: '/img/scroll.svg',
@@ -68,6 +68,26 @@ export const chainData: ChainItem = {
             logo : '',
         }
     },
+    scrollS: {
+        name: 'Scroll (Sepolia)',
+        value: 'scrollS',
+        type: 'test',
+        logo: '/img/scroll.svg',
+        txDataAPI : ``,
+        balanceDataAPI : ``,
+        ethBalanceAPI : ``,
+        hashLinkEndpoint : ``,
+        tokenTransferDataAPI : ``,
+        addresses: {
+        },
+        lite: {
+            name: '',
+            value: '',
+            type: 'test',
+            logo : '',
+        }
+
+    },
     linea: {
         name: 'Linea',
         value: 'linea',
@@ -89,10 +109,28 @@ export const chainData: ChainItem = {
                 txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
                 balanceDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokenlist&address=`,
                 ethBalanceAPI : `https://explorer.goerli.linea.build/api?module=account&action=eth_get_balance&address=`,
-                hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
+                // hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
                 tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
-                addresses: '',
+                // addresses: '',
             }
+        }
+    },
+    lineaT: {
+        name: 'Linea Testnet',
+        value: 'lineaT',
+        type: 'test',
+        logo: '/img/linea1.svg',
+        txDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=txlist&address=`,
+        balanceDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokenlist&address=`,
+        ethBalanceAPI : `https://explorer.goerli.linea.build/api?module=account&action=eth_get_balance&address=`,
+        hashLinkEndpoint : `https://blockscout.scroll.io/tx/`,
+        tokenTransferDataAPI : `https://explorer.goerli.linea.build/api?module=account&action=tokentx&address=`,
+        addresses: '',
+        lite: {
+            name: '',
+            value: '',
+            type: 'test',
+            logo : '',
         }
     },
     polygonZkEVM: {
@@ -100,11 +138,29 @@ export const chainData: ChainItem = {
         value: 'polygonZkEVM',
         type: 'main',
         logo: '/img/pzk.svg',
-        txDataAPI: `https://explorer.mainnet.zkevm-test.net/api?module=account&action=txlist&address=`,
-        balanceDataAPI: `https://explorer.mainnet.zkevm-test.net/api?module=account&action=tokenlist&address=`,
-        ethBalanceAPI : `https://explorer.mainnet.zkevm-test.net/api?module=account&action=eth_get_balance&address=`,
-        hashLinkEndpoint: `https://explorer.mainnet.zkevm-test.net/tx/`,
-        tokenTransferDataAPI: `https://explorer.mainnet.zkevm-test.net/api?module=account&action=tokentx&address=`,
+        txDataAPI: `https://api-zkevm.polygonscan.com/api?module=account&action=txlist&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&address=`,
+        balanceDataAPI: `https://api-zkevm.polygonscan.com/api?module=account&action=txlistinternal&startblock=1&endblock=99999999&sort=asc&address=`,
+        ethBalanceAPI : `https://api-zkevm.polygonscan.com/api?module=account&action=balance&tag=latest&address=`,
+        hashLinkEndpoint: `https://polygonscan.com/tx/`,
+        tokenTransferDataAPI: `https://api-zkevm.polygonscan.com/api?module=account&action=tokentx&startblock=0&endblock=999999999&sort=asc&address=`,
+        addresses: '',
+        lite: {
+            name: '',
+            value: '',
+            type: 'test',
+            logo : '',
+        }
+    },
+    base: {
+        name: 'Base',
+        value: 'base',
+        type: 'main',
+        logo: '/img/base.svg',
+        txDataAPI : `https://api.basescan.org/api?module=account&action=txlist&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&address=`,
+        balanceDataAPI : `https://api.basescan.org/api?module=account&action=tokenlist&address=`,
+        ethBalanceAPI : `https://api.basescan.org/api?module=account&action=eth_get_balance&address=`,
+        hashLinkEndpoint : `https://basescan.org/tx/`,
+        tokenTransferDataAPI : `https://api.basescan.org/api?module=account&action=tokentx&startblock=0&endblock=999999999&sort=asc&address=`,
         addresses: '',
         lite: {
             name: '',
@@ -113,4 +169,6 @@ export const chainData: ChainItem = {
             logo : '',
         }
     }
+
 };
+

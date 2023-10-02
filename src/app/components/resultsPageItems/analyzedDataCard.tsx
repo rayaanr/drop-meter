@@ -34,12 +34,12 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
     const [bridgeOutAmount, setBridgeOutAmount] = useState(0);
     const ethPrice = useEthPrice();
 
-    const [zkLiteTxCount, setZkLiteTxCount] = useState<number>(0);
-    const [lineaTestnetTxCount, setLineaTestnetTxCount] = useState<number>(0);
-
-    const handleZkLiteTxCountChange = (count: number) => {
-        setZkLiteTxCount(count);
-    };
+    // const [zkLiteTxCount, setZkLiteTxCount] = useState<number>(0);
+    // const [lineaTestnetTxCount, setLineaTestnetTxCount] = useState<number>(0);
+    //
+    // const handleZkLiteTxCountChange = (count: number) => {
+    //     setZkLiteTxCount(count);
+    // };
 
     // const protocolList = ProtocolsCard({ transactionsList: txList});
     // console.log(protocolList);
@@ -89,7 +89,7 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
 
     return (
         <>
-            <section className={`gap-8 grid grid-cols-2 sm:grid-cols-4`}>
+            <section className={`gap-8 grid ${selectedNetwork === 'zksync' ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-2 sm:grid-cols-3'} `}>
                 <Card>
                     <CardBody>
                         <h1 className={'text-sm'}>Interactions</h1>
@@ -121,6 +121,7 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
                         }
                     </CardBody>
                 </Card>
+                {selectedNetwork === 'zksync' && (
                 <Card>
                     <CardBody>
                                 <h1 className={'text-sm'}>Bridge</h1>
@@ -136,6 +137,7 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
                                 </p>
                     </CardBody>
                 </Card>
+                )}
                 <Card>
                     <CardBody>
                         <h1 className={'text-sm'}>Fee</h1>
@@ -194,9 +196,11 @@ function AnalyzedDataCard({txList, balanceList, selectedNetwork, address, liteDa
                 </Table>
             </section>
 
+            {selectedNetwork === 'zksync' && (
             <section className={'mt-8'}>
                 <LiteDataCard selectedNetwork={selectedNetwork} liteData={liteData}/>
             </section>
+            )}
             
             {/*<section className={'mt-8'}>*/}
             {/*    <ProtocolsCard transactionsList={txList} />*/}
